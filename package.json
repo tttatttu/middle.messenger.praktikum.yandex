@@ -1,0 +1,36 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "private": true,
+  "description": "My project",
+  "author": "Tatiana Malashkina",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "start": "cross-env PORT=3006 && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "engines": {
+    "node": "12.x"
+  },
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "autoprefixer": "^10.4.2",
+    "enb-bemxjst": "^8.10.6",
+    "enb-postcss": "^3.0.0",
+    "express": "^4.17.2",
+    "gulp-postcss": "^9.0.1",
+    "parcel": "^2.2.1",
+    "postcss-autoreset": "^3.0.4",
+    "postcss-bem": "^0.4.1",
+    "postcss-cssnext": "^3.1.1",
+    "postcss-easings": "^3.0.1",
+    "postcss-import": "^14.0.2",
+    "postcss-initial": "^3.0.4",
+    "postcss-mixins": "^9.0.1",
+    "postcss-nested": "^5.0.6",
+    "postcss-simple-vars": "^6.0.3"
+  }
+}
