@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="./registration.scss">
+</head>
+<main>
+    <div class="popup" id="popup__registration">
+        <h1 class="popup__title">Регистрация</h1>
+        <form class="popup__form popup__form_new" name="registration" novalidate>
+            <input type="email" id="email" name="email" required placeholder="Почта"/>
+            <span id="email-error" class="error error_email"></span>
+            <input type="text" id="login" name="login" minlength="2" maxlength="30" required placeholder="Логин"/>
+            <span id="login-error" class="error error_name"></span>
+            <input type="text" id="name" name="name" minlength="2" maxlength="30" required placeholder="Имя"/>
+            <span id="name-error" class="error error_name"></span>
+            <input type="text" id="surname" name="surname" minlength="2" maxlength="30" required placeholder="Фамилия"/>
+            <span id="surname-error" class="error error_surname"></span>
+            <input type="tel" id="phone" name="phone" minlength="2" maxlength="30" required placeholder="Телефон"/>
+            <span id="phone-error" class="error error_phone"></span>
+            <input type="text" id="password" name="password" minlength="6" maxlength="30" required placeholder="Пароль"/>
+            <span id="password-error" class="error error_password"></span>
+            <input type="text" id="password_again" name="password_again" minlength="6" maxlength="30" required placeholder="Пароль (еще раз)"/>
+            <span id="password_again-error" class="error error_password_again"></span>
+            <button id="submit" class="button popup__button popup__button_add" disabled>Зарегистрироваться</button>
+        </form>
+        <a><h2>Войти</h2></a>
+    </div>
+</main>
+</html>

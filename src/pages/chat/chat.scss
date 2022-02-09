@@ -1,0 +1,183 @@
+.chat {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+
+  &__list {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #252934;
+  }
+
+  &__profile {
+    height: 30px;
+    padding: 10px 10px 0px 0;
+    text-align: end;
+    border-bottom: 1px solid #252934;
+  }
+
+  &__input {
+    margin: 10px;
+    height: 20px;
+  }
+
+  &__users {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #252934;
+  }
+
+  &__user {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    border-bottom: 1px solid #252934;
+    padding: 10px 10px 10px 0;
+  }
+
+  &__count {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    background: red;
+    text-align: center;
+    font-weight: bold;
+    color: #fafafa;
+  }
+
+  &__img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 10px;
+  }
+
+  &__title {
+    font-size: medium;
+    margin: 0;
+  }
+
+  &__subtitle {
+    display: flex;
+    font-size: smaller;
+    margin: 0;
+  }
+
+  &__text {
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__helper {
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+  }
+
+  &__time {
+    font-size: smaller;
+    color: gray;
+  }
+
+  &__feed {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__header {
+    width: 98%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px 5px 0;
+    border-bottom: 1px solid #252934;
+  }
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin-left: 10px;
+  }
+
+  &__name {
+    font-size: medium;
+    margin: 6px auto auto 10px;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0 auto auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__warning {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__footer {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__clip {
+    border: none;
+    background: none;
+    margin-left: 10px;
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 10px;
+  }
+
+  &__message {
+    width: 100%;
+    height: 25px;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #252934;
+  }
+}
