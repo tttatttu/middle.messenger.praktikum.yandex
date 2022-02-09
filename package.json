@@ -9,10 +9,15 @@
     "build": "parcel build index.hbs --no-cache --public-url /",
     "start": "npm run build && node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tttatttu/middle.messenger.praktikum.yandex.git"
+  },
   "engines": {
     "node": ">=12.x"
   },
   "license": "ISC",
+  "homepage": "https://github.com/tttatttu/middle.messenger.praktikum.yandex",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/transformer-sass": "^2.2.1",
