@@ -8,36 +8,36 @@
 </head>
 <main>
     <div class="profile">
-        <button class="profile__button">&#8678;</button>
+        <button type="button" class="profile__button">&#8678;</button>
         <form class="profile__body" id="form_profile">
             <img class="profile__avatar" src="../../../static/img/female.jpeg" alt="avatar" />
-            <ul class="profile__contents">
-                <li class="profile__content">
+            <div class="profile__contents">
+                <div class="profile__content">
                     <h2 class="profile__title">Почта</h2>
                     <input class="profile__input" type="email" id="email" name="email" placeholder="Введите почту" value="email"/>
-                </li>
-                <li class="profile__content">
+                </div>
+                <div class="profile__content">
                     <h2 class="profile__title">Логин</h2>
                     <input class="profile__input" type="text" id="login" name="login" placeholder="Введите логин" value="login"/>
-                </li>
-                <li class="profile__content">
+                </div>
+                <div class="profile__content">
                     <h2 class="profile__title">Имя</h2>
                     <input class="profile__input" type="text" id="first_name" name="first_name" placeholder="Введите имя" value="first_name"/>
-                </li>
-                <li class="profile__content">
+                </div>
+                <div class="profile__content">
                     <h2 class="profile__title">Фамилия</h2>
                     <input class="profile__input" type="text" id="second_name" name="second_name" placeholder="Введите фамилию" value="second_name"/>
-                </li>
-                <li class="profile__content">
+                </div>
+                <div class="profile__content">
                     <h2 class="profile__title">Имя в чате</h2>
                     <input class="profile__input" type="text" id="display_name" name="display_name" placeholder="Введите имя в чате" value="display_name"/>
-                </li>
-                <li class="profile__content">
+                </div>
+                <div class="profile__content">
                     <h2 class="profile__title">Телефон</h2>
                     <input class="profile__input" type="tel" id="phone" name="phone" placeholder="Введите телефон" value="phone"/>
-                </li>
-            </ul>
-            <button id="submit" class="profile__submit" >Сохранить</button>
+                </div>
+            </div>
+            <button type="submit" id="submit" class="profile__submit" >Сохранить</button>
         </form>
 
     </div>
