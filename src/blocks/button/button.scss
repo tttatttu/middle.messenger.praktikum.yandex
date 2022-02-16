@@ -1,0 +1,22 @@
+.btn {
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-decoration: none;
+
+  &_blueviolet {
+    background: blueviolet;
+    color: #fafafa;
+  }
+
+  //&_white {
+  //  color: #3369f3;
+  //  background: #efefef;
+  //}
+}
