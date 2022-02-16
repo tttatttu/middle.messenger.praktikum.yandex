@@ -1,13 +1,17 @@
 
 
-var data = {
-  'cond1'  : true,
-  'cond2'  : false,
+const button = {
+  "authorization": {
+      "text": "Авторизоваться",
+      "className": "button_blueviolet",
+      "type": "submit"
+  }
 };
 
 document.getElementById('button').addEventListener('click', function () {
-  var source = document.getElementById('button-template').innerHTML;
-  var html = Handlebars.compile(source);
-  // var html = template(data);
+  const source = document.getElementById('button').innerHTML;
+  const Handlebars = require("handlebars");
+  const template = Handlebars.compile(source);
+  const html = template(button);
   document.getElementById('content').innerHTML = html;
 });
