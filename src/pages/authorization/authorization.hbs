@@ -9,7 +9,7 @@
           </button>
       </script>
   </head>
-
+  {{!< base}}
   <main>
     <div class='popup' id='popup__add'>
       <h1 class='popup__title'>Вход</h1>
@@ -28,6 +28,7 @@
         />
         <span id='password-error' class='error error_password'></span>
           {{>button/button}}
+          authorizationButton
         <button type='submit' id='submit' class='popup__button' disabled>Авторизоваться</button>
       </form>
       <a class='popup__link' href='../registration/registration.hbs'><h2>Нет аккаунта?</h2></a>
