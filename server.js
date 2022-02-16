@@ -10,4 +10,3 @@ app.listen(PORT, function () {
 });
 
 app.use(express.static(staticPath));
-

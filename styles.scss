@@ -1,17 +1,18 @@
 @import url(static/normalize.scss);
 @import url(static/fonts/fonts.css);
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    color: #252934;
-    background: #fafafa;
-    font-size: large;
-    font-family: 'Faro Sad', Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #252934;
+  background: #fafafa;
+  font-size: large;
+  font-family: 'Faro Sad', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
