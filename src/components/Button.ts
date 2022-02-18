@@ -2,12 +2,12 @@ import Handlebars from 'handlebars/dist/handlebars';
 import {Component} from './Component'
 
 export class Button extends Component {
-    constructor(tagName, config, template: string = '{{text}}') {
-        super(tagName, config, template);
+    constructor(tagName, config, tmpl: string = '{{text}}') {
+        super(tagName, config, tmpl);
     }
 
     render() {
-        return Handlebars.compile(this.template, this.props);
+        return Handlebars.compile(this.tmpl, this.props);
     }
 }
 

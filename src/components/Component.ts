@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars/dist/handlebars';
 import {Block, Meta} from './Block';
 
 interface Listener {
@@ -13,8 +14,8 @@ interface BlockConfig extends Meta {
 export class Component extends Block {
     needInit = false;
 
-    constructor(tagName, config: BlockConfig = {}, template = '') {
-        super(tagName, config, template);
+    constructor(tagName, config: BlockConfig = {}, tmpl = '') {
+        super(tagName, config, tmpl);
         if (config.on) {
             this.setOn(config.on);
         }
@@ -37,6 +38,6 @@ export class Component extends Block {
     }
 
     render() {
-        return `${Handlebars.compile(this.template, this.props)}`;
+        return Handlebars.compile(this.tmpl, this.props);
     }
 }

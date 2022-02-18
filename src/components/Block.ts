@@ -30,12 +30,12 @@ export abstract class Block {
     _meta: Meta | null = null;
     _eventBus: () => EventBus;
     props: BlockProps;
-    template: string;
+    tmpl: string;
     children = [];
 
     private fragment: DocumentFragment;
 
-    constructor(tagName: string, config: BlockProps, template: string, children = []) {
+    constructor(tagName: string, config: BlockProps, tmpl: string, children = []) {
         const eventBus = new EventBus();
         this._meta = {
             tagName,
@@ -45,7 +45,7 @@ export abstract class Block {
         };
 
         this.children = children;
-        this.template = template;
+        this.tmpl = tmpl;
         this.props = this._makePropsProxy(config.props);
         this._eventBus = () => eventBus;
         this.componentDidMount = config.componentDidMount || this.componentDidMount;
