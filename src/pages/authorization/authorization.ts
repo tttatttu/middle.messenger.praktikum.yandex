@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars/dist/handlebars';
-import {tmpl}from '../../blocks/button/button.tmpl'
+import { tmpl } from '../../blocks/button/button.tmpl';
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const compiled = Handlebars.compile(tmpl)
@@ -9,6 +9,3 @@ import {tmpl}from '../../blocks/button/button.tmpl'
 //     document.body.innerHTML = html
 //
 // })
-
-
-

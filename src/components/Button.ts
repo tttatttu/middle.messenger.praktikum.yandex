@@ -1,14 +1,14 @@
 import Handlebars from 'handlebars/dist/handlebars';
-import {Component} from './Component'
+import { Component } from './Component';
 
 export class Button extends Component {
-    constructor(tagName, config, tmpl: string = '{{text}}') {
-        super(tagName, config, tmpl);
-    }
+  constructor(tagName, config, tmpl: string = '{{text}}') {
+    super(tagName, config, tmpl);
+  }
 
-    render() {
-        return `${Handlebars.compile(this.tmpl, this.props)}`;
-    }
+  render() {
+    return `${Handlebars.compile(this.tmpl, this.props)}`;
+  }
 }
 
 // import Handlebars from 'handlebars/dist/handlebars';

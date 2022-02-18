@@ -1,43 +1,43 @@
 import Handlebars from 'handlebars/dist/handlebars';
-import {Block, Meta} from './Block';
+import { Block, Meta } from './Block';
 
 interface Listener {
-    event: string;
-    callback: any;
+  event: string;
+  callback: any;
 }
 
 interface BlockConfig extends Meta {
-    emitter?: Listener[];
-    on?: [string, Function];
+  emitter?: Listener[];
+  on?: [string, Function];
 }
 
 export class Component extends Block {
-    needInit = false;
+  needInit = false;
 
-    constructor(tagName, config: BlockConfig = {}, tmpl = '') {
-        super(tagName, config, tmpl);
-        if (config.on) {
-            this.setOn(config.on);
-        }
-
-        if (config.emitter) {
-            this.setListeners(config.emitter);
-        }
+  constructor(tagName, config: BlockConfig = {}, tmpl = '') {
+    super(tagName, config, tmpl);
+    if (config.on) {
+      this.setOn(config.on);
     }
 
-    setListeners(listeners: Listener[]) {
-        listeners.forEach(({event, callback}) => this._element.addEventListener(event, callback));
+    if (config.emitter) {
+      this.setListeners(config.emitter);
     }
+  }
 
-    setOn(on) {
-        this._eventBus().on(on[0], on[1]);
-    }
+  setListeners(listeners: Listener[]) {
+    listeners.forEach(({ event, callback }) => this._element.addEventListener(event, callback));
+  }
 
-    getContent() {
-        return this._element;
-    }
+  setOn(on) {
+    this._eventBus().on(on[0], on[1]);
+  }
 
-    render() {
-        return Handlebars.compile(this.tmpl, this.props);
-    }
+  getContent() {
+    return this._element;
+  }
+
+  render() {
+    return Handlebars.compile(this.tmpl, this.props);
+  }
 }

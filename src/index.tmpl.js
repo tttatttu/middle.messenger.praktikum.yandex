@@ -1,4 +1,4 @@
 // language=hbs
-export default`
+export default `
   Hello , {{name}}
-`
+`;

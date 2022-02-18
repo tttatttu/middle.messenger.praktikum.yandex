@@ -9,7 +9,7 @@
     "build": "parcel build static/index.html --no-cache --public-url /",
     "start": "npm run build && node server.js",
     "dev": "npm run start",
-    "lint:ts": "eslint --ext js,ts src",
+    "lint:ts": "eslint --ext js,.ts,.tsx src",
     "lint": "npx eslint src/**/*.js --fix",
     "prettier": "npx prettier --write ."
   },

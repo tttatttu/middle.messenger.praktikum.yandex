@@ -1,3 +1,3 @@
-import {init} from '../../components/App';
+import { app } from '../../components/App';
 
-init();
+app();
