@@ -7,7 +7,7 @@ export class Button extends Component {
     }
 
     render() {
-        return Handlebars.compile(this.tmpl, this.props);
+        return `${Handlebars.compile(this.tmpl, this.props)}`;
     }
 }
 

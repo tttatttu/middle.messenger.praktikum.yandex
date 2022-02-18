@@ -43,7 +43,7 @@ export abstract class Block {
             classes: config.classes,
             attrs: config.attrs
         };
-
+console.log(config)
         this.children = children;
         this.tmpl = tmpl;
         this.props = this._makePropsProxy(config.props);
@@ -65,6 +65,7 @@ export abstract class Block {
     private _createResources(): void {
         const { tagName,  classes, attrs } = this._meta;
         this._element = this._createDocumentElement(tagName);
+
         if (classes) {
             this._element.classList.add(...classes);
         }

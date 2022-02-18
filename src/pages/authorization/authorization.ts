@@ -1,22 +1,5 @@
-import {Button} from "../../components/Button";
-import {tmpl, tmpl as buttonTmpl} from '../../blocks/button/button.tmpl';
 import Handlebars from 'handlebars/dist/handlebars';
-
-export const authorizationButton = new Button(
-    'button',
-    {
-        props: {
-            text: 'Авторизоваться'
-        },
-        classes: ['button', 'button_blueviolet', 'authorization__button'],
-        attrs: {
-            href: ''
-        }
-    },
-    buttonTmpl
-);
-
-render(authorizationButton, authorizationButton)
+import {tmpl}from '../../blocks/button/button.tmpl'
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const compiled = Handlebars.compile(tmpl)
@@ -26,4 +9,6 @@ render(authorizationButton, authorizationButton)
 //     document.body.innerHTML = html
 //
 // })
+
+
 
