@@ -114,6 +114,16 @@ export abstract class Block {
         const block = this.render();
 
         this._element.innerHTML = block;
+        this._renderChildren();
+    }
+
+    private _renderChildren(): void {
+        this.fragment = document.createDocumentFragment();
+        this.children.forEach(child => {
+            child._eventBus().emit(Block.EVENTS.FLOW_CDU);
+            return this.fragment.append(child.getContent());
+        });
+        this._element.appendChild(this.fragment);
     }
 
     render(): string {
