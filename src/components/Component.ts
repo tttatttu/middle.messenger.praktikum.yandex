@@ -1,4 +1,4 @@
-import {Block, Meta} from './Block';
+import {Block1, Meta} from './Block1';
 
 interface Listener {
     event: string;
@@ -10,7 +10,7 @@ interface BlockConfig extends Meta {
     on?: [string, Function];
 }
 
-export class Component extends Block {
+export class Component extends Block1 {
     needInit = false;
 
     constructor(tagName, config: BlockConfig = {}, template = '') {

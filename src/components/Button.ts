@@ -1,24 +1,20 @@
-import Handlebars from 'handlebars/dist/handlebars';
-import {Component} from './Component'
+import Block from "./Block";
 
-export class Button extends Component {
-    constructor(tagName, config, template: string = '{{text}}') {
-        super(tagName, config, template);
-    }
-
-    render() {
-        return Handlebars.compile(this.template, this.props);
+interface ButtonProps {
+    type?: string;
+    className?: string;
+    text?: string;
+    events?: {
+        clock: () => void
     }
 }
 
-// import Handlebars from 'handlebars/dist/handlebars';
-// import template from './index.tmpl'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//     const compiled = Handlebars.compile(template)
-//
-//     const html = compiled({name: "tanya"})
-//
-//     document.body.innerHTML = html
-//
-// })
+export class Button extends Block {
+    constructor(props: ButtonProps) {
+        super('button', props);
+    }
+
+    render() {
+        return this.props;
+    }
+}
