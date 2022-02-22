@@ -103,7 +103,7 @@ class Block {
     }
 
     getContent(): HTMLElement | null {
-        return this.element;
+        return this._element;
     }
 
     _makePropsProxy(props) {

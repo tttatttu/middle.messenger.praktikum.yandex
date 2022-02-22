@@ -1,18 +1,11 @@
-import {Button} from "../../components/Button";
-import {template as buttonTemplate} from '../../blocks/button/button';
+import Handlebars from 'handlebars/dist/handlebars';
+import { tmpl } from '../../blocks/button/button.tmpl';
 
-export const authorizationButton = new Button(
-    'a',
-    {
-        props: {
-            text: 'Нет аккаунта?'
-        },
-        classes: ['button', 'button_blueviolet', 'authorization__button'],
-        attrs: {
-            href: '/signup'
-        }
-    },
-    buttonTemplate
-);
-
-
+// document.addEventListener('DOMContentLoaded', () => {
+//     const compiled = Handlebars.compile(tmpl)
+//
+//     const html = compiled({text: 'Нет аккаунта?', type: 'submit', classes: ['button', 'button_blueviolet', 'authorization__button']})
+//
+//     document.body.innerHTML = html
+//
+// })

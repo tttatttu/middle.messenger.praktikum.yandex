@@ -3,7 +3,6 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["rbnb-base"],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"
@@ -16,6 +15,7 @@
     "no-return-assign": "off",
     "arrow-body-style": "off",
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
-    "no-unsafe-optional-chaining": "error"
+    "no-unsafe-optional-chaining": "error",
+    "import/no-unresolved": "off"
   }
 }

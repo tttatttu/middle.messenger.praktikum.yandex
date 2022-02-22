@@ -9,16 +9,13 @@
     "build": "parcel build src/index.html --no-cache --public-url /",
     "start": "npm run build && node server.js",
     "dev": "npm run start",
-    "lint:ts": "eslint --ext js,ts src",
+    "lint:ts": "eslint --ext js,.ts,.tsx src",
     "lint": "npx eslint src/**/*.js --fix",
     "prettier": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tttatttu/middle.messenger.praktikum.yandex.git"
-  },
-  "engines": {
-    "node": ">=12.x"
   },
   "license": "ISC",
   "homepage": "https://github.com/tttatttu/middle.messenger.praktikum.yandex",

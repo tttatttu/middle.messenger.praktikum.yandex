@@ -1,4 +1,6 @@
 import {Block1, Meta} from './Block1';
+import Handlebars from 'handlebars/dist/handlebars';
+import { Block, Meta } from './Block';
 
 interface Listener {
     event: string;
