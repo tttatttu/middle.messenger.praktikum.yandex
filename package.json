@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build src/index.html --no-cache --public-url /",
     "start": "npm run build && node server.js",
-    "dev": "npm run start",
+    "dev": "parcel src/index.html --no-cache",
     "lint:ts": "eslint --ext js,.ts,.tsx src",
     "lint": "npx eslint src/**/*.js --fix",
     "prettier": "npx prettier --write ."
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/tttatttu/middle.messenger.praktikum.yandex",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.2",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
     "@parcel/transformer-sass": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
@@ -49,6 +50,7 @@
   "dependencies": {
     "cssnano": "^5.0.17",
     "handlebars": "^4.7.7",
+    "nanoid": "^3.3.1",
     "parcel-plugin-handlebars": "^0.4.4",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "postcss-modules": "^4.3.0",

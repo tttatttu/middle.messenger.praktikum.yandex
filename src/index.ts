@@ -1,9 +1,12 @@
 import {renderDOM} from "./utils/renderDOM";
-import {Button} from './components/Button'
+import {Button} from "./components/Button/button";
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const button = new Button({
         text: 'hi',
+        type: 'button',
+        className: 'button_blueviolet',
         events: {
             click: () => console.log("hi")
         }
@@ -13,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         button.setProps({
-            text: "bye"
+            text: "bye",
+            type: 'button',
+            className: 'button_white',
+            click: () => console.log('bye')
         })
     }, 3000)
 })
