@@ -12,12 +12,10 @@ interface ButtonProps {
 
 export class Button extends Block {
     constructor(props: ButtonProps) {
-        debugger
         super(props);
     }
 
     render() {
-        console.log(this.compile(template, {...this.props}))
         return this.compile(template, {...this.props});
     }
 }

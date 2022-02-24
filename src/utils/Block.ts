@@ -17,27 +17,49 @@ class Block {
     private _meta: {props: any};
 
     protected props: any;
+    protected children: Record<string, Block>;
+
     private eventBus: () => EventBus
 
-    /** JSDoc
-     * @param {string} tagName
-     * @param {Object} props
-     *
-     * @returns {void}
-     */
-    constructor(props: any = {}) {
-        debugger
+    constructor(propsAndChildren: any = {}) {
         const eventBus = new EventBus();
+
+        const { props, children } = this.getChildren(propsAndChildren);
+
+        this.children = children;
+
         this._meta = {
             props
         };
 
         this.props = this._makePropsProxy(props);
 
+        this.initChildren();
         this.eventBus = () => eventBus;
 
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
+    }
+
+    getChildren(propsAndChildren: any) {
+        const children = {};
+        const props ={};
+
+        Object.entries(propsAndChildren).map(([key, value]) => {
+            if (value instanceof Block) {
+                children[key] = value
+            } else if (Array.isArray(value) && value.every(v => (v instanceof Block))){
+                children[key] = value
+            } else {
+                props[key] = value
+            }
+        })
+
+        return { props, children }
+    }
+
+    protected initChildren() {
+
     }
 
     _registerEvents(eventBus) {
@@ -53,12 +75,18 @@ class Block {
 
     _componentDidMount() {
         this.componentDidMount();
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     componentDidMount() {}
 
+    dispatchComponentDidMount() {
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM)
+    }
+
     _componentDidUpdate(oldProps, newProps) {
         // const response = this.componentDidUpdate(oldProps, newProps);
+        this._render();
         if(this.componentDidUpdate(oldProps, newProps)) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
         }
@@ -92,14 +120,12 @@ class Block {
         }
 
         this._element = newElement;
-        console.log( '3', newElement)
+
         this._addEvents()
-        console.log('4', this._element)
     }
 
     protected render(): DocumentFragment {
         // return  this.compile()
-        console.log('4', new DocumentFragment())
         return new DocumentFragment();
     }
 
@@ -171,10 +197,34 @@ class Block {
     compile(template: (context: any) => string, context: any) {
         const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
 
+        Object.entries(this.children).forEach(([key, child]) => {
+            if (Array.isArray(child)) {
+                context[key] = child.map(ch => `<div data-id="id-${ch.id}"></div>`)
+
+                return
+            }
+            context[key] = `<div data-id="id-${child.id}"></div>`
+        })
+
         const htmlString = template(context);
 
         fragment.innerHTML = htmlString;
-        console.log("2", fragment.content)
+
+        Object.entries(this.children).forEach(([key, child]) => {
+            if (Array.isArray(child)) {
+                context[key] = child.map(ch => `<div data-id="id-${ch.id}"></div>`)
+
+                return
+            }
+            const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`)
+
+            if (!stub) {
+                return
+            }
+
+            stub.replaceWith(child.getContent()!)
+        })
+
         return fragment.content
     }
 }

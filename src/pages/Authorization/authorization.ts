@@ -1,17 +1,19 @@
 import Block from "../../utils/Block";
-import template from './login.hbs'
 import {Button} from "../../components/Button/button";
+import template from "./authorization.hbs";
 
-export class LoginPage extends Block {
+export class AuthorizationPage extends Block {
     constructor() {
         super();
     }
 
     protected initChildren() {
         this.children.button = new Button({
-            text: "ну я даже и не знаю",
+            text: "Авторизоваться",
+            type: "submit",
+            className: "popup__button",
             events: {
-                click: () => console.log("ура")
+                click: () => console.log("вывести все поля формы")
             }
         })
     }

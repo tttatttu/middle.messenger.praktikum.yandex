@@ -1,17 +1,4 @@
-<html lang='ru'>
-  <head>
-    <meta charset='utf-8' />
-    <title>Authorization</title>
-    <link rel='stylesheet' href='./authorization.scss' />
-    <script id='button' type='text/x-handlebars-template'>
-      <button type={{type}}
-      class=`button ${{className}}`>
-      {{text}}
-      </button>
-    </script>
-  </head>
-  {{!< base}}
-  <main>
+
     <div class='popup' id='popup__add'>
       <h1 class='popup__title'>Вход</h1>
       <form class='popup__form popup__form_new' name='new' novalidate>
@@ -28,9 +15,8 @@
           placeholder='Пароль'
         />
         <span id='password-error' class='error error_password'></span>
-        <button type='submit' id='submit' class='popup__button' disabled>Авторизоваться</button>
+<!--        <button type='submit' id='submit' class='popup__button' disabled>Авторизоваться</button>-->
+          {{{button}}}
       </form>
       <a class='popup__link' href='../registration/registration.hbs'><h2>Нет аккаунта?</h2></a>
     </div>
-  </main>
-</html>

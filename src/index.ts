@@ -1,25 +1,11 @@
 import {renderDOM} from "./utils/renderDOM";
-import {Button} from "./components/Button/button";
+import {LoginPage} from "./pages/Login/login";
+import {AuthorizationPage} from "./pages/Authorization/authorization";
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const button = new Button({
-        text: 'hi',
-        type: 'button',
-        className: 'button_blueviolet',
-        events: {
-            click: () => console.log("hi")
-        }
-    })
+    const loginPage = new LoginPage()
+    const authorizationPage = new AuthorizationPage()
 
-    renderDOM('#app', button)
-
-    setTimeout(() => {
-        button.setProps({
-            text: "bye",
-            type: 'button',
-            className: 'button_white',
-            click: () => console.log('bye')
-        })
-    }, 3000)
+    renderDOM('#app', authorizationPage)
 })

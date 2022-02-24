@@ -1,0 +1,22 @@
+@import url(../../static/normalize.scss);
+@import url(../../static/fonts/fonts.css);
+@import url(../components/Button/button.scss);
+@import url(../components/Error/errors.scss);
+@import url(../pages/Login/login.scss);
+@import url(../pages/Authorization/authorization.scss);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: #252934;
+  background: #fafafa;
+  font-size: large;
+  font-family: 'Faro Sad', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
