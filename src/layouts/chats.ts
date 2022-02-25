@@ -4,7 +4,7 @@ import Handlebars from 'handlebars';
 
 export class ChatLayout extends Component {
   constructor(tagName = 'div', config = {}, tmpl = '') {
-    super(tagName, { classes: ['root', 'chat'], props: {}, ...config }, tmpl);
+    super(tagName, { classes: ['root', 'Chat'], props: {}, ...config }, tmpl);
     this.setOn(['initLayout', initLayout.bind(this)]);
     this.needInit = true;
   }

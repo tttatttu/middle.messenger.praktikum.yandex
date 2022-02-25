@@ -1,39 +1,37 @@
 interface listeners {
-    [key: string]: Function[];
+  [key: string]: Function[];
 }
 
 export class EventBus {
-    listeners: listeners = {};
+  listeners: listeners = {};
 
-    constructor() {
-        this.listeners = {};
+  constructor() {
+    this.listeners = {};
+  }
+
+  public on(event: string, callback: Function) {
+    if (!this.listeners[event]) {
+      this.listeners[event] = [];
     }
 
-    public on(event: string, callback: Function) {
-        if (!this.listeners[event]) {
-            this.listeners[event] = [];
-        }
+    this.listeners[event].push(callback);
+  }
 
-        this.listeners[event].push(callback);
+  public off(event: string, callback: Function) {
+    if (!this.listeners[event]) {
+      throw new Error(`Нет события: ${event}`);
     }
 
-    public off(event: string, callback: Function) {
-        if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`);
-        }
+    this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
+  }
 
-        this.listeners[event] = this.listeners[event].filter(
-            listener => listener !== callback
-        );
+  public emit(event: string, ...args: any[]) {
+    if (!this.listeners[event]) {
+      return;
     }
 
-    public emit(event: string, ...args: any[]) {
-        if (!this.listeners[event]) {
-            return
-        }
-
-        this.listeners[event].forEach(function(listener) {
-            listener(...args);
-        });
-    }
+    this.listeners[event].forEach(function (listener) {
+      listener(...args);
+    });
+  }
 }
