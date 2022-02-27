@@ -11,15 +11,21 @@
     border-right: 1px solid #252934;
   }
 
+  &__users {
+    border-top: 1px solid #252934;
+  }
+
   &__profile {
     height: 30px;
-    padding: 10px 10px 0px 0;
+    padding: 10px 10px 0 0;
     text-align: end;
     border-bottom: 1px solid #252934;
   }
 
-  &__input {
-    margin: 10px;
+  &__search {
+    display: flex;
+    max-width: 85%;
+    margin: 10px 10px 10px 15px;
     height: 20px;
   }
 
@@ -36,6 +42,23 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: auto;
+    overflow: auto;
+  }
+
+  &__messages {
+    display: flex;
+    justify-content: end;
+    overflow: auto;
+    flex-grow: 1;
+    flex-direction: column-reverse;
+    padding-right: 10px;
+  }
+
+  &__date {
+    width: 100%;
+    text-align: center;
+    margin: 5px auto;
   }
 
   &__warning {
@@ -48,6 +71,7 @@
     height: 30px;
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
   }
 
   &__clip {
@@ -70,5 +94,28 @@
     padding-left: 10px;
     margin-right: 10px;
     border: 1px solid #252934;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0 auto auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    background-repeat: no-repeat;
+    background-image: url(/static/img/arrow.svg);
+  }
+
+  &__clip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 15px;
+    background-repeat: no-repeat;
+    background-image: url(/static/img/clip.svg);
   }
 }

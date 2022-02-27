@@ -8,11 +8,15 @@ interface UserListProps {
   name: string;
   time: string;
   text: string;
-  unread: number;
+  unread?: number;
+}
+
+interface UsersListProps {
+  users: UserListProps[];
 }
 
 export class UserList extends Block {
-  constructor(props: UserListProps) {
+  constructor(props: UsersListProps) {
     super(props);
   }
 

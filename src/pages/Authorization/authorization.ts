@@ -13,9 +13,7 @@ export class AuthorizationPage extends Block {
       text: 'Авторизоваться',
       type: 'submit',
       className: 'popup__button',
-      events: {
-        click: () => console.log('вывести все поля формы'),
-      },
+      events: { click: () => console.log('вывести все поля формы') },
     });
     this.children.inputLogin = new Input({
       type: 'text',

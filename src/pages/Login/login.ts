@@ -10,9 +10,7 @@ export class LoginPage extends Block {
   protected initChildren() {
     this.children.button = new Button({
       text: 'ну я даже и не знаю',
-      events: {
-        click: () => console.log('ура'),
-      },
+      events: { click: () => console.log('ура') },
     });
   }
 

@@ -10,6 +10,7 @@ interface InputProps {
   required?: boolean;
   placeholder?: string;
   className?: string;
+  value?: string;
   events?: {
     onChange: () => void;
   };

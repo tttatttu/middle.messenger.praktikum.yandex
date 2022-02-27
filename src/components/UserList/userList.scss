@@ -1,3 +1,14 @@
+.users {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 10px;
+
+  &__link {
+    text-decoration: none;
+    color: #1e1e1e;
+  }
+}
+
 .user {
   display: flex;
   justify-content: space-around;
@@ -6,6 +17,9 @@
   padding: 10px 10px 10px 0;
 
   &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     border-radius: 20px;
@@ -13,14 +27,14 @@
     top: 5px;
     left: 0;
     background: red;
-    text-align: center;
+    font-size: small;
     font-weight: bold;
     color: #fafafa;
   }
 
   &__img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50px;
   }
 
@@ -43,6 +57,7 @@
   }
 
   &__text {
+    font-size: 12px;
     font-weight: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -64,7 +79,7 @@
   }
 
   &__time {
-    font-size: smaller;
+    font-size: small;
     color: gray;
   }
 }

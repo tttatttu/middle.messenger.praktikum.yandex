@@ -27,9 +27,7 @@ class Block {
 
     this.children = children;
 
-    this._meta = {
-      props,
-    };
+    this._meta = { props };
 
     this.props = this._makePropsProxy(props);
 

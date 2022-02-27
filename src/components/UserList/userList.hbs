@@ -1,16 +1,28 @@
-<a href='' class='user'>
-  <img class={{className}} src={{href}} alt={{alt}} />
-  <div class='user__info'>
-    <h2 class='user__title'>{{name}}</h2>
-    <h3 class='user__subtitle'>Ты:
-      <span class='user__text'>{{text}}</span></h3>
-  </div>
-  <div class='user__helper'>
-    <button type='button' class='user__button'>X</button>
-    <span class='user__time'>{{time}}</span>
-  </div>
-  {{button}}
-  <div class='user__count'>
-    {{unread}}
-  </div>
-</a>
+<ul class='users'>
+  {{#each users}}
+    <a href='' class='users__link'>
+      <li class='user'>
+        <img class='user__img' src={{href}} alt={{alt}} />
+        <div class='user__info'>
+          <h2 class='user__title'>{{name}}</h2>
+          <!--                    //добавить признак чье сообщение-->
+          {{#if name}}
+            <span class='user__text'>{{text}}</span>
+          {{else}}
+            <span class='user__text'><h3 class='user__subtitle'>Ты: </h3>{{text}}</span>
+          {{/if}}
+        </div>
+        <div class='user__helper'>
+          <button type='button' class='user__button'>x</button>
+          <span class='user__time'>{{time}}</span>
+        </div>
+        {{button}}
+        {{#if unread}}
+          <div class='user__count'>
+            {{unread}}
+          </div>
+        {{/if}}
+      </li>
+    </a>
+  {{/each}}
+</ul>
