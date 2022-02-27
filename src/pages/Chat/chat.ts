@@ -130,7 +130,12 @@ export class ChatPage extends Block {
     this.children.buttonMessage = new Button({
       type: 'submit',
       className: 'chat__btn',
-      events: { click: () => console.log(document.getElementById('message').value) },
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          console.log(document.getElementById('message').value);
+        },
+      },
     });
     this.children.buttonClip = new Button({
       type: 'submit',

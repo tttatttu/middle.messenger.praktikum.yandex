@@ -2,9 +2,9 @@
   <h1 class='popup__title'>Вход</h1>
   <form class='popup__form popup__form_new' name='new' novalidate>
     {{{inputLogin}}}
-    <span id='login-error' class='error error_login'></span>
+    <span id='login-error' class='popup__error popup__error_active'>Логин должен быть не меньше 3х символов</span>
     {{{inputPassword}}}
-    <span id='password-error' class='error error_password'></span>
+    <span id='password-error' class='popup__error popup__error_active'>Пароль должен быть больше 6 символов</span>
     {{{button}}}
   </form>
   <a class='popup__link' href='../registration/registration.hbs'><h2>Нет аккаунта?</h2></a>

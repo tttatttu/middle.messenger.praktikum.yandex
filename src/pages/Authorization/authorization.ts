@@ -13,7 +13,15 @@ export class AuthorizationPage extends Block {
       text: 'Авторизоваться',
       type: 'submit',
       className: 'popup__button',
-      events: { click: () => console.log('вывести все поля формы') },
+      events: {
+        click: (e) => {
+          e.preventDefault();
+
+          const login = document.getElementById('login');
+          const password = document.getElementById('password');
+          console.log(login.value, password.value);
+        },
+      },
     });
     this.children.inputLogin = new Input({
       type: 'text',
@@ -25,6 +33,27 @@ export class AuthorizationPage extends Block {
       required: true,
       className: 'popup__input',
       pattern: '/^[А-ЯЁ]([а-яё]{1,29})([-][А-ЯЁ]([а-яё]{1,29}))$/g',
+      value: '',
+      events: {
+        focus: (e) => {
+          const error = document.getElementById('login-error');
+
+          if (!e.target.validity.valid) {
+            error.classList.add('error_login_active');
+          } else {
+            error.remove();
+          }
+        },
+        blur: (e) => {
+          const error = document.getElementById('login-error');
+
+          if (!e.target.validity.valid) {
+            error.classList.add('error_login_active');
+          } else {
+            error.remove();
+          }
+        },
+      },
     });
     this.children.inputPassword = new Input({
       type: 'text',
@@ -36,6 +65,27 @@ export class AuthorizationPage extends Block {
       required: true,
       className: 'popup__input',
       pattern: '[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?',
+      value: '',
+      events: {
+        focus: (e) => {
+          const error = document.getElementById('password-error');
+
+          if (!e.target.validity.valid) {
+            error.classList.add('error_login_active');
+          } else {
+            error.remove();
+          }
+        },
+        blur: (e) => {
+          const error = document.getElementById('password-error');
+
+          if (!e.target.validity.valid) {
+            error.classList.add('error_login_active');
+          } else {
+            error.remove();
+          }
+        },
+      },
     });
   }
 

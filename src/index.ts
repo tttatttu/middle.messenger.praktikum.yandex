@@ -8,5 +8,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorizationPage = new AuthorizationPage();
   const chat = new ChatPage();
 
-  renderDOM('#app', chat);
+  renderDOM('#app', authorizationPage);
 });

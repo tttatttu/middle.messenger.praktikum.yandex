@@ -12,9 +12,11 @@ interface InputProps {
   className?: string;
   value?: string;
   events?: {
-    onChange: () => void;
+    onChange?: () => void;
+    focus?: any;
+    blur?: any;
   };
-  pattern?: any;
+  pattern?: string;
 }
 
 export class Input extends Block {
