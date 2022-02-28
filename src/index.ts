@@ -1,14 +1,14 @@
 import { renderDOM } from './utils/renderDOM';
-import { LoginPage } from './pages/Login/login';
 import { AuthorizationPage } from './pages/Authorization/authorization';
 import { ChatPage } from './pages/Chat/chat';
-import { ProfilePage } from './pages/Profile/profile'
+import { ProfilePage } from './pages/Profile/profile';
+import { ProfileEditPage } from './pages/ProfileEdit/profileEdit';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const loginPage = new LoginPage();
   const authorizationPage = new AuthorizationPage();
   const chat = new ChatPage();
   const profilePage = new ProfilePage();
+  const profileEditPage = new ProfileEditPage();
 
-  renderDOM('#app', profilePage);
+  renderDOM('#app', chat);
 });

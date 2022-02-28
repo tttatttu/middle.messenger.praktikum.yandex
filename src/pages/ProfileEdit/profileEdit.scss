@@ -47,12 +47,20 @@
     width: 60%;
     border: none;
     text-align: end;
-    &:active,
-    &:hover,
-    &:focus {
-      outline: 0;
-      outline-offset: 0;
-    }
+    //&:active,
+    //&:hover,
+    //&:focus {
+    //  outline: 0;
+    //  outline-offset: 0;
+    //}
+  }
+
+  &__input:invalid,
+  &__input._error {
+    border-color: #900;
+  }
+  &__input:focus:invalid {
+    outline: none;
   }
 
   &__submit {

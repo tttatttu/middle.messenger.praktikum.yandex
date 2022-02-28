@@ -71,7 +71,7 @@ export class AuthorizationPage extends Block {
           const error = document.getElementById('password-error');
 
           if (!e.target.validity.valid) {
-            error.classList.add('error_login_active');
+            error.classList.add('error_password_active');
           } else {
             error.remove();
           }
@@ -80,7 +80,7 @@ export class AuthorizationPage extends Block {
           const error = document.getElementById('password-error');
 
           if (!e.target.validity.valid) {
-            error.classList.add('error_login_active');
+            error.classList.add('error_password_active');
           } else {
             error.remove();
           }

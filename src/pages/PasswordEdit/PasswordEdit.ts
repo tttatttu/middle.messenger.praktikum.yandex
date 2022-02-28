@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './profile.hbs';
+import template from './passwordEdit.hbs';
 import { Profile } from '../../components/Profile/profile';
 
 const profiles = [
@@ -29,7 +29,7 @@ const profiles = [
   },
 ];
 
-export class ProfilePage extends Block {
+export class PasswordEditPage extends Block {
   constructor() {
     super();
   }
