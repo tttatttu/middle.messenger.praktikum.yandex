@@ -104,7 +104,7 @@ export class ChatPage extends Block {
     this.children.user = new UserList({ users });
     this.children.link = new Link({
       text: 'Профиль >',
-      href: '../profile/profile.hbs',
+      href: '../Profile/Profile.hbs',
       className: 'chat__profile',
     });
     this.children.inputSearch = new Input({

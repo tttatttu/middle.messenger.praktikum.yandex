@@ -16,29 +16,6 @@
     border-radius: 100px;
   }
 
-  &__contents {
-  }
-
-  &__content {
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #bcbfceff;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &__title {
-    font-size: medium;
-  }
-
-  &__text {
-    text-align: end;
-  }
-
   &__footer {
     width: 400px;
     display: flex;

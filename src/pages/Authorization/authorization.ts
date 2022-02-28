@@ -41,7 +41,7 @@ export class AuthorizationPage extends Block {
           if (!e.target.validity.valid) {
             error.classList.add('error_login_active');
           } else {
-            error.remove();
+            error.classList.remove('error_login_active');
           }
         },
         blur: (e) => {

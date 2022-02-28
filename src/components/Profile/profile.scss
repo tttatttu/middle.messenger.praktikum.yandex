@@ -1,0 +1,34 @@
+.wrapper {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  //justify-content: end;
+  //overflow: auto;
+  //flex-grow: 1;
+  //padding-right: 10px;
+
+
+
+
+  &__content {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bcbfceff;
+    padding-left: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    font-size: medium;
+  }
+
+  &__text {
+    text-align: end;
+  }
+}
