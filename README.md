@@ -23,3 +23,5 @@ npm run deploy - Деплой проекта
 
 
 [Макет](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1)
+
+[PR sprint_2](https://github.com/tttatttu/middle.messenger.praktikum.yandex/pull/3)
