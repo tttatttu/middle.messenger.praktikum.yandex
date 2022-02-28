@@ -13,7 +13,6 @@ interface ProfileEditProps {
   required?: boolean;
   minlength?: string;
   maxlength?: string;
-  events?: any;
 }
 
 interface ProfilesEditProps {
