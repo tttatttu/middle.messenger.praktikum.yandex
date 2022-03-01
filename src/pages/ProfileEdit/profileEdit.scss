@@ -63,9 +63,6 @@
   &__input._error {
     border-color: #900;
   }
-  &__input:focus:invalid {
-    outline: none;
-  }
 
   &__submit {
     margin-top: 30px;

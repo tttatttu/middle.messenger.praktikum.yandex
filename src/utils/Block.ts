@@ -57,7 +57,7 @@ class Block {
 
   protected initChildren() {}
 
-  _registerEvents(eventBus) {
+  private _registerEvents(eventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -68,7 +68,7 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -79,7 +79,7 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
+  private _componentDidUpdate(oldProps, newProps) {
     // const response = this.componentDidUpdate(oldProps, newProps);
     this._render();
     if (this.componentDidUpdate(oldProps, newProps)) {
@@ -103,7 +103,7 @@ class Block {
     return this._element;
   }
 
-  _render() {
+  private _render() {
     const fragment = this.render();
 
     const newElement = fragment.firstElementChild as HTMLElement;
@@ -128,7 +128,7 @@ class Block {
     return this._element;
   }
 
-  _makePropsProxy(props) {
+  private _makePropsProxy(props) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
@@ -152,7 +152,7 @@ class Block {
     });
   }
 
-  _removeEvents() {
+  private _removeEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
 
     if (!events || !this._element) {
@@ -164,7 +164,7 @@ class Block {
     });
   }
 
-  _addEvents() {
+  private _addEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
 
     if (!events) {
@@ -176,7 +176,7 @@ class Block {
     });
   }
 
-  _createDocumentElement(tagName: string): HTMLElement {
+  private _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
     return document.createElement(tagName);
   }
