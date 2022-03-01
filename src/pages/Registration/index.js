@@ -1,8 +1,5 @@
-
-import template from './index.hbs'
+import template from './index.hbs';
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.innerHTML = template({name: 'Tanya'})
-})
-
-
+  document.body.innerHTML = template({ name: 'Tanya' });
+});

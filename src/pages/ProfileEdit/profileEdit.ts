@@ -2,8 +2,8 @@ import Block from '../../utils/Block';
 import template from './profileEdit.hbs';
 import { ProfileEdit } from '../../components/ProfileEdit/profileEdit';
 import { Button } from '../../components/Button/button';
-import {Input} from "../../components/Input/input";
-import {PATTERN_VALIDATION} from "../../utils/CONST";
+import { Input } from '../../components/Input/input';
+import { PATTERN_VALIDATION } from '../../utils/CONST';
 
 const profiles = [
   {

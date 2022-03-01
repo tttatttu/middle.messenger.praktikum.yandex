@@ -29,4 +29,3 @@
 
 [Макет](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1)
 <a href='https://naughty-knuth-64d00f.netlify.app'>Демо</a>
-

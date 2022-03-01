@@ -1,8 +1,8 @@
 import Block from '../../utils/Block';
 import template from './passwordEdit.hbs';
-import {Input} from "../../components/Input/input";
-import {PATTERN_VALIDATION} from "../../utils/CONST";
-import {Button} from "../../components/Button/button";
+import { Input } from '../../components/Input/input';
+import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { Button } from '../../components/Button/button';
 
 export class PasswordEditPage extends Block {
   constructor() {

@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import { Button } from '../../components/Button/button';
 import template from './authorization.hbs';
 import { Input } from '../../components/Input/input';
-import {PATTERN_VALIDATION} from "../../utils/CONST";
+import { PATTERN_VALIDATION } from '../../utils/CONST';
 
 export class AuthorizationPage extends Block {
   constructor() {
