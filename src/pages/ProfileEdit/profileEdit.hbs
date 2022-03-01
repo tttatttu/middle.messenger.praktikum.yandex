@@ -6,9 +6,38 @@
       src='https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'
       alt='avatar'
     />
-    <div class='profile__contents'>
-      {{{block}}}
-    </div>
-    {{{button}}}
+        <form class='profile__contents popup__form_new' name='profileEdit' novalidate>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите почту</h2>
+                {{{inputEmail}}}
+            </div>
+            <span id='email-error' class='popup__error'>Введи адрес электронной почты</span>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите логин</h2>
+                {{{inputLogin}}}
+            </div>
+            <span id='login-error' class='popup__error'>Проверьте формат данных в поле</span>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите имя</h2>
+                {{{inputName}}}
+            </div>
+            <span id='name-error' class='popup__error'>Проверьте формат данных в поле</span>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите фамилию</h2>
+                {{{inputSurName}}}
+            </div>
+            <span id='surname-error' class='popup__error'>Проверьте формат данных в поле</span>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите имя в чате</h2>
+                {{{inputDisplayName}}}
+            </div>
+            <span id='display_name-error' class='popup__error'>Проверьте формат данных в поле</span>
+            <div class='profile__content'>
+                <h2 class='info__title'>Введите телефон</h2>
+                {{{inputPhone}}}
+            </div>
+            <span id='phone-error' class='popup__error'>Введите номер телефона</span>
+            {{{button}}}
+        </form>
   </form>
 </div>

@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import { Button } from '../../components/Button/button';
 import template from './authorization.hbs';
 import { Input } from '../../components/Input/input';
+import {PATTERN_VALIDATION} from "../../utils/CONST";
 
 export class AuthorizationPage extends Block {
   constructor() {
@@ -32,7 +33,7 @@ export class AuthorizationPage extends Block {
       placeholder: 'Логин',
       required: true,
       className: 'popup__input',
-      pattern: '/^[А-ЯЁ]([а-яё]{1,29})([-][А-ЯЁ]([а-яё]{1,29}))$/g',
+      pattern: PATTERN_VALIDATION.login,
       value: '',
       events: {
         focus: (e) => {
@@ -64,7 +65,7 @@ export class AuthorizationPage extends Block {
       placeholder: 'Пароль',
       required: true,
       className: 'popup__input',
-      pattern: '[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?',
+      pattern: PATTERN_VALIDATION.password,
       value: '',
       events: {
         focus: (e) => {
