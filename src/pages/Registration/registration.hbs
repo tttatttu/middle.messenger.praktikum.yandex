@@ -1,21 +1,27 @@
 <div class='popup1' id='popup__registration'>
-  <h1 class='popup__title'>Регистрация</h1>
-  <form class='popup__form popup__form_new' name='registration' novalidate>
-    {{{inputEmail}}}
-    <span id='email-error' class='popup__error'>Введи адрес электронной почты</span>
-    {{{inputLogin}}}
-    <span id='login-error' class='popup__error'>Проверьте формат данных в поле</span>
-    {{{inputName}}}
-    <span id='name-error' class='popup__error'>Проверьте формат данных в поле</span>
-    {{{inputSurName}}}
-    <span id='surname-error' class='popup__error'>Проверьте формат данных в поле</span>
-    {{{inputPhone}}}
-    <span id='phone-error' class='popup__error'>Введите номер телефона</span>
-    {{{inputPassword}}}
-    <span id='password-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
-    {{{inputPasswordAgain}}}
-    <span id='password_again-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
-    {{{button}}}
-  </form>
-  <a class='popup__link' href='../Authorization/authorization.hbs'><h2>Войти</h2></a>
+    <h1 class='popup__title'>Регистрация</h1>
+    <!--  <form class='popup__form popup__form_new' name='registration' novalidate>-->
+    <form class='form' name='registration' novalidate>
+    {{{test}}}
+<!--    <form class='form' name='registration'>-->
+        {{{inputEmail}}}
+
+        <span id='email-error' class='popup__error'>Введи адрес электронной почты</span>
+        <div class="form__field">
+            {{{inputLogin}}}
+            <span id='login-error' class='form__error'>Формат поля: Мой-Логин</span>
+        </div>
+        {{{inputName}}}
+        <span id='name-error' class='popup__error'>Проверьте формат данных в поле</span>
+        {{{inputSurName}}}
+        <span id='surname-error' class='popup__error'>Проверьте формат данных в поле</span>
+        {{{inputPhone}}}
+        <span id='phone-error' class='popup__error'>Введите номер телефона</span>
+        {{{inputPassword}}}
+        <span id='password-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
+        {{{inputPasswordAgain}}}
+        <span id='password_again-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
+        {{{button}}}
+    </form>
+    <a class='popup__link' href='../Authorization/authorization.hbs'><h2>Войти</h2></a>
 </div>

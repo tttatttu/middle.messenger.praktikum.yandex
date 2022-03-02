@@ -3,6 +3,15 @@ import { Button } from '../../components/Button/button';
 import template from './registration.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
+import {Profile} from "../../components/Profile/profile";
+import {FormValidator} from "../../utils/FormValidator";
+import {validateInputs} from "../../utils/Valid";
+
+const errorMessages = {
+  empty: "Это обязательное поле",
+  wrongLength: "Должно быть от 2 до 30 символов",
+  wrongUrl: "Здесь должна быть ссылка",
+};
 
 export class RegistrationPage extends Block {
   constructor() {
@@ -10,6 +19,15 @@ export class RegistrationPage extends Block {
   }
 
   protected initChildren() {
+//     const k = `<form class="popup__form popup__form_new" name="new" novalidate>
+//     <input type="text" id="name" name="name" class="popup__input popup__input_type_name" minlength="2" maxlength="30" required placeholder="Название">
+//     <span id="name-error" class="error error_name"></span>
+//     <input type="url" id="link" name="link" class="popup__input popup__input_type_link-url" required placeholder="Ссылка на картинку">
+//     <span id="link-error" class="error error_link"></span>
+//     <button id="submit" class="button popup__button popup__button_add" disabled>+</button>
+// </form>`
+// //
+//     this.children.test = new FormValidator('form', k)
     this.children.button = new Button({
       text: 'Зарегистрироваться',
       type: 'submit',
@@ -18,6 +36,7 @@ export class RegistrationPage extends Block {
         click: (e) => {
           e.preventDefault();
 
+          console.log(e.target)
           const email = document.getElementById('email');
           const login = document.getElementById('login');
           const name = document.getElementById('name');
@@ -70,31 +89,49 @@ export class RegistrationPage extends Block {
       maxlength: '20',
       placeholder: 'Логин',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.login,
-      value: '',
+      className: 'form__input',
+      // pattern: '^[А-ЯЁ]([а-яё\-]{1,29})$/g',
+      // pattern: '[123]',
+      // value: '',
       events: {
+        // change: (val => console.log(val)),
         focus: (e) => {
-          const error = document.getElementById('login-error');
 
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
+          validateInputs({elementId: e.target.id, regexp: /\d+/})
+          // const error = document.getElementById('login-error')
+          // console.log(e.target.validity.valid)
+          // const error = document.getElementById('login-error');
+          //
+          // if (!/\d/g.test(e.target.value)) {
+          //   console.log('error')
+          //   error.classList.add('form__error_active');
+          //   error.classList.remove('form__error_normal');
+          // } else {
+          //   console.log('not')
+          //   error.classList.add('form__error_normal');
+          //   error.classList.remove('form__error_active');
+          // }
+
+          // const error = document.getElementById('login-error');
+          //
+          // if (!e.target.validity.valid) {
+          //   error.classList.add('popup__error_active');
+          //   error.classList.remove('popup__error_normal');
+          // } else {
+          //   error.classList.add('popup__error_normal');
+          //   error.classList.remove('popup__error_active');
+          // }
         },
         blur: (e) => {
-          const error = document.getElementById('login-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
+        //   const error = document.getElementById('login-error');
+        //
+        //   if (!e.target.validity.valid) {
+        //     error.classList.add('popup__error_active');
+        //     error.classList.remove('popup__error_normal');
+        //   } else {
+        //     error.classList.add('popup__error_normal');
+        //     error.classList.remove('popup__error_active');
+        //   }
         },
       },
     });
@@ -177,10 +214,14 @@ export class RegistrationPage extends Block {
       placeholder: 'Телефон',
       required: true,
       className: 'popup__input',
-      pattern: PATTERN_VALIDATION.phone,
+      pattern: '/^(\+7|8)(([(]9\d{2}[)])|(\s?9\d{2}))(\s|[-])?(\d{3})[-]?(\d{2})[-]?(\d{2})$/g',
       value: '',
       events: {
         focus: (e) => {
+
+            validateInput(e.target.id, /^(\+7|8)(([(]9\d{2}[)])|(\s?9\d{2}))(\s|[-])?(\d{3})[-]?(\d{2})[-]?(\d{2})$/g)
+
+
           const error = document.getElementById('phone-error');
 
           if (!e.target.validity.valid) {
@@ -277,6 +318,14 @@ export class RegistrationPage extends Block {
       },
     });
   }
+
+  // inputValidation() {
+  //     focus: (e) => {
+  //       validateInputs({elementId: e.target.id, regexp: /\d+/})
+  //     },
+  //
+  //
+  // }
 
   render() {
     return this.compile(template, {});
