@@ -3,6 +3,7 @@ import template from './passwordEdit.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
 import { Button } from '../../components/Button/button';
+import { validateInputs } from '../../utils/Valid';
 
 export class PasswordEditPage extends Block {
   constructor() {
@@ -18,10 +19,11 @@ export class PasswordEditPage extends Block {
         click: (e) => {
           e.preventDefault();
 
-          const oldPassword = document.getElementById('oldPassword');
-          const newPassword = document.getElementById('newPassword');
-          const newPasswordAgain = document.getElementById('newPasswordAgain');
-          console.log(oldPassword.value, newPassword.value, newPasswordAgain.value);
+          validateInputs(
+            { elementId: 'oldPassword', regexp: PATTERN_VALIDATION.oldPassword },
+            { elementId: 'oldPassword', regexp: PATTERN_VALIDATION.oldPassword },
+            { elementId: 'newPasswordAgain', regexp: PATTERN_VALIDATION.newPasswordAgain },
+          );
         },
       },
     });
@@ -29,110 +31,46 @@ export class PasswordEditPage extends Block {
       type: 'text',
       id: 'oldPassword',
       name: 'oldPassword',
-      minlength: '6',
-      maxlength: '20',
+      minlength: '8',
+      maxlength: '40',
       placeholder: 'Введите пароль',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.password,
-      value: '',
-      events: {
-        focus: (e) => {
-          const error = document.getElementById('oldPassword-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-        blur: (e) => {
-          const error = document.getElementById('oldPassword-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-      },
+      className: 'form__input',
+      events: this.inputValidation(),
     });
     this.children.inputNewPassword = new Input({
       type: 'text',
       id: 'newPassword',
       name: 'newPassword',
-      minlength: '6',
-      maxlength: '20',
+      minlength: '8',
+      maxlength: '40',
       placeholder: 'Введите новый пароль',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.password,
-      value: '',
-      events: {
-        focus: (e) => {
-          const error = document.getElementById('newPassword-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-        blur: (e) => {
-          const error = document.getElementById('newPassword-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-      },
+      className: 'form__input',
+      events: this.inputValidation(),
     });
     this.children.inputPasswordAgain = new Input({
       type: 'text',
       id: 'newPasswordAgain',
       name: 'newPasswordAgain',
-      minlength: '6',
-      maxlength: '20',
+      minlength: '8',
+      maxlength: '40',
       placeholder: 'Повторите новый пароль',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.password,
-      value: '',
-      events: {
-        focus: (e) => {
-          const error = document.getElementById('newPasswordAgain-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-        blur: (e) => {
-          const error = document.getElementById('newPasswordAgain-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('popup__error_active');
-            error.classList.remove('popup__error_normal');
-          } else {
-            error.classList.add('popup__error_normal');
-            error.classList.remove('popup__error_active');
-          }
-        },
-      },
+      className: 'form__input',
+      events: this.inputValidation(),
     });
+  }
+
+  inputValidation() {
+    return {
+      focus: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+      blur: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+    };
   }
 
   render() {

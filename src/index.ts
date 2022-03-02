@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const registrationPage = new RegistrationPage();
   const passwordEditPage = new PasswordEditPage();
 
-  renderDOM('#app', registrationPage);
+  renderDOM('#app', passwordEditPage);
 });

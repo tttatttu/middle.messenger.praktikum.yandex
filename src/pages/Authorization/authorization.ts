@@ -3,6 +3,7 @@ import { Button } from '../../components/Button/button';
 import template from './authorization.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { validateInputs } from '../../utils/Valid';
 
 export class AuthorizationPage extends Block {
   constructor() {
@@ -13,14 +14,15 @@ export class AuthorizationPage extends Block {
     this.children.button = new Button({
       text: 'Авторизоваться',
       type: 'submit',
-      className: 'popup__button',
+      className: 'popup__button button_blueviolet',
       events: {
         click: (e) => {
           e.preventDefault();
 
-          const login = document.getElementById('login');
-          const password = document.getElementById('password');
-          console.log(login.value, password.value);
+          validateInputs(
+            { elementId: 'login', regexp: PATTERN_VALIDATION.login },
+            { elementId: 'password', regexp: PATTERN_VALIDATION.password },
+          );
         },
       },
     });
@@ -32,62 +34,31 @@ export class AuthorizationPage extends Block {
       maxlength: '20',
       placeholder: 'Логин',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.login,
-      value: '',
-      events: {
-        focus: (e) => {
-          const error = document.getElementById('login-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('error_login_active');
-          } else {
-            error.classList.remove('error_login_active');
-          }
-        },
-        blur: (e) => {
-          const error = document.getElementById('login-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('error_login_active');
-          } else {
-            error.remove();
-          }
-        },
-      },
+      className: 'form__input',
+      events: this.inputValidation(),
     });
     this.children.inputPassword = new Input({
       type: 'text',
       id: 'password',
       name: 'password',
-      minlength: '6',
-      maxlength: '30',
+      minlength: '8',
+      maxlength: '40',
       placeholder: 'Пароль',
       required: true,
-      className: 'popup__input',
-      pattern: PATTERN_VALIDATION.password,
-      value: '',
-      events: {
-        focus: (e) => {
-          const error = document.getElementById('password-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('error_password_active');
-          } else {
-            error.remove();
-          }
-        },
-        blur: (e) => {
-          const error = document.getElementById('password-error');
-
-          if (!e.target.validity.valid) {
-            error.classList.add('error_password_active');
-          } else {
-            error.remove();
-          }
-        },
-      },
+      className: 'form__input',
+      events: this.inputValidation(),
     });
+  }
+
+  inputValidation() {
+    return {
+      focus: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+      blur: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+    };
   }
 
   render() {

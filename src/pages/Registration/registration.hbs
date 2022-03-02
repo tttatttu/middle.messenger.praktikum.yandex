@@ -1,27 +1,37 @@
-<div class='popup1' id='popup__registration'>
-    <h1 class='popup__title'>Регистрация</h1>
-    <!--  <form class='popup__form popup__form_new' name='registration' novalidate>-->
-    <form class='form' name='registration' novalidate>
-    {{{test}}}
-<!--    <form class='form' name='registration'>-->
-        {{{inputEmail}}}
-
-        <span id='email-error' class='popup__error'>Введи адрес электронной почты</span>
-        <div class="form__field">
-            {{{inputLogin}}}
-            <span id='login-error' class='form__error'>Формат поля: Мой-Логин</span>
-        </div>
-        {{{inputName}}}
-        <span id='name-error' class='popup__error'>Проверьте формат данных в поле</span>
-        {{{inputSurName}}}
-        <span id='surname-error' class='popup__error'>Проверьте формат данных в поле</span>
-        {{{inputPhone}}}
-        <span id='phone-error' class='popup__error'>Введите номер телефона</span>
-        {{{inputPassword}}}
-        <span id='password-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
-        {{{inputPasswordAgain}}}
-        <span id='password_again-error' class='popup__error'>Длина пароля не должна быть меньше 6 символов</span>
-        {{{button}}}
-    </form>
-    <a class='popup__link' href='../Authorization/authorization.hbs'><h2>Войти</h2></a>
+<div class='popup' id='popup__registration'>
+  <h1 class='popup__title'>Регистрация</h1>
+  <form class='form form__size_smale' name='registration' novalidate>
+    <div class='form__field'>
+      {{{inputEmail}}}
+      <span id='email-error' class='form__error form__error_light'>Введи адрес электронной почты</span>
+    </div>
+    <div class='form__field'>
+      {{{inputLogin}}}
+      <span id='login-error' class='form__error form__error_light'>Логин должен начинаться с заглавной буквы, возможны
+        "_" и "-"</span>
+    </div>
+    <div class='form__field'>
+      {{{inputName}}}
+      <span id='name-error' class='form__error form__error_light'>Имя должно начинаться с заглавной буквы, возможен "-"</span>
+    </div>
+    <div class='form__field'>
+      {{{inputSurName}}}
+      <span id='surname-error' class='form__error form__error_light'>Фамилия должна начинаться с заглавной буквы,
+        возможен спецсимвол "-"</span>
+    </div>
+    <div class='form__field'>
+      {{{inputPhone}}}
+      <span id='phone-error' class='form__error form__error_light'>Недопустимый формат номера</span>
+    </div>
+    <div class='form__field'>
+      {{{inputPassword}}}
+      <span id='password-error' class='form__error form__error_light'>Пароль должен быть от 8 до 40 символов</span>
+    </div>
+    <div class='form__field'>
+      {{{inputPasswordAgain}}}
+      <span id='password_again-error' class='form__error form__error_light'>Пароль должен быть от 8 до 40 символов</span>
+    </div>
+    {{{button}}}
+  </form>
+  <a class='popup__link' href='../Authorization/authorization.hbs'><h2>Войти</h2></a>
 </div>

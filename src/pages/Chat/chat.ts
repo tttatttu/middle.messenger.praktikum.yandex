@@ -6,6 +6,8 @@ import { ChatHeader } from '../../components/ChatHeader/chatHeader';
 import { UserList } from '../../components/UserList/userList';
 import { Button } from '../../components/Button/button';
 import { Message } from '../../components/Message/message';
+import { validateInputs } from '../../utils/Valid';
+import { PATTERN_VALIDATION } from '../../utils/CONST';
 
 const users = [
   {
@@ -133,7 +135,7 @@ export class ChatPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          console.log(document.getElementById('message').value);
+          validateInputs({ elementId: 'message', regexp: PATTERN_VALIDATION.message });
         },
       },
     });
@@ -143,6 +145,17 @@ export class ChatPage extends Block {
       events: { click: () => console.log('прикрепить файл') },
     });
     this.children.messages = new Message({ messages });
+  }
+
+  inputValidation() {
+    return {
+      focus: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+      blur: (e) => {
+        validateInputs({ elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id] });
+      },
+    };
   }
 
   render() {
