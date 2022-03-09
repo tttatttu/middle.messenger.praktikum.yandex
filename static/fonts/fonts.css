@@ -1,11 +1,11 @@
 @font-face {
-  src: url("Faro-RegularSad.woff") format("woff");
+  src: url('Faro-RegularSad.woff') format('woff');
   font-family: 'Faro Sad';
   font-weight: normal;
 }
 
 @font-face {
-  src: url("Faro-BoldSad.woff") format("woff");
+  src: url('Faro-BoldSad.woff') format('woff');
   font-family: 'Faro Sad';
   font-weight: bold;
 }

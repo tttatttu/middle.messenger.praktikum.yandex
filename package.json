@@ -1,32 +1,38 @@
 {
   "name": "chat",
   "version": "0.0.1",
-  "private": false,
   "description": "My project",
   "author": "Tatiana Malashkina",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build index.hbs --no-cache --public-url /",
-    "start": "npm run build && node server.js"
+    "build": "parcel build src/index.html --no-cache --public-url /",
+    "start": "npm run build && node server.js",
+    "dev": "parcel src/index.html --no-cache",
+    "lint:ts": "eslint --ext js,.ts,.tsx src --fix",
+    "lint": "npx eslint src/**/*.js --fix",
+    "prettier": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tttatttu/middle.messenger.praktikum.yandex.git"
   },
-  "engines": {
-    "node": ">=12.x"
-  },
   "license": "ISC",
   "homepage": "https://github.com/tttatttu/middle.messenger.praktikum.yandex",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars": "^1.0.2",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
     "@parcel/transformer-sass": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.1",
+    "autoprefix": "^1.0.1",
     "autoprefixer": "^10.4.2",
-    "enb-bemxjst": "^8.10.6",
+    "enb-bemxjst": "^4.1.1",
     "enb-postcss": "^3.0.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.2",
     "gulp-postcss": "^9.0.1",
-    "parcel": "^2.2.1",
+    "parcel": "^2.3.1",
     "postcss-autoreset": "^3.0.4",
     "postcss-bem": "^0.4.1",
     "postcss-cssnext": "^3.1.1",
@@ -36,12 +42,19 @@
     "postcss-loader": "^6.2.1",
     "postcss-mixins": "^9.0.1",
     "postcss-nested": "^5.0.6",
-    "postcss-simple-vars": "^6.0.3"
+    "postcss-simple-vars": "6.0.3",
+    "stylelint": "14.5.0",
+    "ts-node": "10.5.0",
+    "typescript": "4.5.5",
+    "handlebars": "^4.7.7"
   },
   "dependencies": {
     "cssnano": "^5.0.17",
+    "nanoid": "^3.3.1",
     "parcel-plugin-handlebars": "^0.4.4",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
     "postcss-modules": "^4.3.0",
+    "prettier": "^2.5.1",
     "serve": "^13.0.2"
   }
 }

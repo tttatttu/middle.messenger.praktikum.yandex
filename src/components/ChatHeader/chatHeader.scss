@@ -1,0 +1,31 @@
+.header {
+  width: 98%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px 5px 0;
+  border-bottom: 1px solid #252934;
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin-left: 10px;
+  }
+
+  &__name {
+    font-size: medium;
+    margin: 6px auto auto 10px;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0 auto auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+  }
+}

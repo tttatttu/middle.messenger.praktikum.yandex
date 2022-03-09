@@ -1,0 +1,10 @@
+<ul class='messages'>
+  {{#each messages}}
+    <li class='message {{className}}'>
+      <h3 class='message__name'>{{name}}</h3>
+      <span class='message__text'>{{text}}</span>
+      <span class='message__time {{className}}'>{{time}}</span>
+    </li>
+  {{/each}}
+  <div class='chat__date'>17 марта</div>
+</ul>

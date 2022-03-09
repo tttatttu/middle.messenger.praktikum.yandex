@@ -1,0 +1,30 @@
+<div class='chat'>
+  <div class='chat__list'>
+    {{{link}}}
+    {{{inputSearch}}}
+    <div class='chat__users'>
+      {{{user}}}
+    </div>
+  </div>
+  <div class='chat__feed'>
+    {{{chatHeader}}}
+    <div class='chat__body'>
+      <!--            // добавить признак выбранного чата-->
+      {{#if messages}}
+        {{{messages}}}
+      {{else}}
+        <h3 class='chat__warning'>
+          Выберите чат, чтобы отправить сообщение
+        </h3>
+      {{/if}}
+    </div>
+    <footer class='chat__footer'>
+      {{{buttonClip}}}
+
+      <form id='form_message' class='chat__form' novalidate>
+        {{{inputMessage}}}
+        {{{buttonMessage}}}
+      </form>
+    </footer>
+  </div>
+</div>

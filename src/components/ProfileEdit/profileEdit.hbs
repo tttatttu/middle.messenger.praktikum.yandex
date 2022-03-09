@@ -1,0 +1,17 @@
+<ul class='info'>
+  {{#each profiles}}
+    <li class='info__content'>
+      <h2 class='info__title'>{{title}}</h2>
+      <input
+        class={{className}}
+        type={{type}}
+        id={{id}}
+        name={{name}}
+        placeholder={{placeholder}}
+        value={{value}}
+        pattern={{pattern}}
+        required={{required}}
+      />
+    </li>
+  {{/each}}
+</ul>

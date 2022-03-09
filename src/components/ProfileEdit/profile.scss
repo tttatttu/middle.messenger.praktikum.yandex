@@ -1,0 +1,28 @@
+.info {
+  list-style-type: none;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+
+  &__content {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bcbfceff;
+    padding-left: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    font-size: medium;
+  }
+
+  &__text {
+    text-align: end;
+  }
+}
