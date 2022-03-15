@@ -1,1 +1,4 @@
-export { Link as default } from './link';
+import {withRouter} from "../../utils/Router";
+import {Link} from "./link";
+
+export default withRouter(Link)

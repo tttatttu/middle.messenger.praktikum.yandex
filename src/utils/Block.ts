@@ -166,7 +166,6 @@ class Block {
 
   private _addEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
-
     if (!events) {
       return;
     }
@@ -219,7 +218,7 @@ class Block {
 
       stub.replaceWith(child.getContent()!);
     });
-
+console.log(fragment.content)
     return fragment.content;
   }
 }

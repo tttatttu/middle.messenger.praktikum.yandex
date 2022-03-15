@@ -1,3 +1,5 @@
+export const API_URL = 'https://ya-praktikum.tech/api/v2/';
+
 export const PATTERN_VALIDATION = {
   login: /^[A-Z][a-z0-9-_]{1,29}$/,
   email: /^[A-Za-z0-9,.-]{1,}[@]([A-Za-z0-9,.-]{1,}[.][A-Za-z]{1,}){1,2}$/,

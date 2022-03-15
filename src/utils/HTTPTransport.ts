@@ -1,81 +1,104 @@
-const METHODS = {
+const Method = {
   GET: 'GET',
   POST: 'POST',
   PUT: 'PUT',
+  PATCH: 'PATCH',
   DELETE: 'DELETE',
 };
 
 interface Options {
+  method: string;
   data?: any;
-  timeout?: number;
-  headers?: object;
 }
 
-function queryStringify(data) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object');
+// function queryStringify(data) {
+//   if (typeof data !== 'object') {
+//     throw new Error('Data must be object');
+//   }
+//
+//   const keys = Object.keys(data);
+//   return keys.reduce((result, key, index) => {
+//     return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
+//   }, '?');
+// }
+
+export default class HTTPTransport {
+  static API_URL = 'https://ya-praktikum.tech/api/v2'
+  protected endpoint: string
+
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`
   }
 
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-  }, '?');
-}
+  // public get = (url, options: Options = {}) => {
+  //   if (options.data) {
+  //     url += queryStringify(options.data);
+  //   }
+  //
+  //   return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+  // };
 
-export class HTTPTransport {
-  get = (url, options: Options = {}) => {
-    if (options.data) {
-      url += queryStringify(options.data);
-    }
+  public get<Response>(path = '/'):Promise<Response> {
+    return this.request<Response>(this.endpoint + path)
+  }
 
-    return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
-  };
+  public post<Response = void>(path: string, data?: unknown):Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.POST,
+      data
+    })
+  }
 
-  post = (url, options: Options = {}) => {
-    return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
-  };
+  public put<Response = void>(path: string, data?: unknown):Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.PUT,
+      data
+    })
+  }
 
-  put = (url, options: Options = {}) => {
-    return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
-  };
+  public patch<Response = void>(path: string, data?: unknown):Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.PATCH,
+      data
+    })
+  }
 
-  delete = (url, options: Options = {}) => {
-    return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
-  };
+  public delete<Response>(path: string):Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.DELETE
+    })
+  }
 
-  request = (url, options = {}, timeout = 5000): Promise<XMLHttpRequest> => {
-    const { headers = {}, method, data } = options;
 
-    return new Promise(function (resolve, reject) {
-      if (!method) {
-        reject('No method');
-        return;
+  private request<Response>(url:string, options: Options = {method: Method.GET}): Promise<Response> {
+    const { method, data } = options;
+
+    return new Promise( (resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+
+      xhr.onreadystatechange = () => {
+        if (xhr.status < 400) {
+          resolve(xhr.response)
+        } else {
+          reject(xhr.response)
+        }
       }
 
-      const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
+      xhr.onabort = () => reject({reason: 'abort'})
+      xhr.onerror = () => reject({reason: 'network error'})
+      xhr.ontimeout = () => reject({reason: 'timeout'});
 
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.setRequestHeader('Content-Type', 'application/json')
 
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
-      });
+      xhr.withCredentials = true
+      xhr.responseType = 'json'
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
-
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-
-      xhr.timeout = timeout;
-      xhr.ontimeout = reject;
-
-      if (isGet || !data) {
+      if (method === Method.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
-  };
+  }
 }
