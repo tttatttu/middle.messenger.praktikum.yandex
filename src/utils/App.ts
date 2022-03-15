@@ -1,6 +1,6 @@
 
 // import {loginPage} from '../pages/';
-import {RegistrationPage} from '../pages/Registration/registration';
+import {SignUpPage} from '../pages/SignUp/signup';
 // import {errorPage} from '../pages/errors/error';
 import {ProfilePage} from '../pages/Profile/profile';
 import {chatsPage} from '../pages/Chat/chat';
@@ -12,13 +12,12 @@ export const init = () => {
     const router = new Router();
     const profilePage = new ProfilePage();
 
-    console.log(ProfilePage.name)
     router
 
-        .use('/sign-up', RegistrationPage)
+        .use('/', SignUpPage)
         .use('/settings', ProfilePage)
         .use('/messenger', chatsPage)
-        .use('/', AuthorizationPage)
+        // .use('/', AuthorizationPage)
 
     // router.go('/profile')
     //
@@ -27,7 +26,7 @@ export const init = () => {
     window.addEventListener('click', (e: MouseEvent) => {
         const target = e.target as HTMLElement;
         const href = target?.getAttribute('href') || target?.closest('a')?.getAttribute('href');
-        console.log(target)
+
         if (href && href[0] === '/') {
             e.preventDefault();
             router.go(href);

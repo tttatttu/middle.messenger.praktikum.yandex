@@ -1,6 +1,6 @@
 import BaseAPI from "./BaseAPI";
 
-interface SignUpData {
+export interface SignUpData {
     first_name: string;
     second_name: string;
     login: string;
@@ -9,7 +9,7 @@ interface SignUpData {
     phone: string;
 }
 
-interface SignInData {
+export interface SignInData {
     login: string;
     password: string;
 }

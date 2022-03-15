@@ -91,7 +91,7 @@ class Router {
         if (!route) {
             return;
         }
-        console.log(route, this._currentRoute, 'routes');
+        // console.log(route, this._currentRoute, 'routes');
         this._currentRoute?.leave();
 
         this._currentRoute = route;

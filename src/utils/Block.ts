@@ -111,7 +111,6 @@ class Block {
     if (this._element) {
       this._removeEvents();
       this._element.replaceWith(newElement);
-      console.log('3', this._element);
     }
 
     this._element = newElement;
@@ -218,7 +217,7 @@ class Block {
 
       stub.replaceWith(child.getContent()!);
     });
-console.log(fragment.content)
+
     return fragment.content;
   }
 }

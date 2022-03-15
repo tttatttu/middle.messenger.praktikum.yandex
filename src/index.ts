@@ -3,7 +3,7 @@ import { AuthorizationPage } from './pages/Authorization/authorization';
 import { ChatPage } from './pages/Chat/chat';
 import { ProfilePage } from './pages/Profile/profile';
 import { ProfileEditPage } from './pages/ProfileEdit/profileEdit';
-import { RegistrationPage } from './pages/Registration/registration';
+import { RegistrationPage } from './pages/SignUp/signup';
 import { PasswordEditPage } from './pages/PasswordEdit/PasswordEdit';
 import {init} from "./utils/App";
 

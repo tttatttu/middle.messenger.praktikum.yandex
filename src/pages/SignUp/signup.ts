@@ -1,13 +1,34 @@
 import Block from '../../utils/Block';
 import { Button } from '../../components/Button/button';
-import template from './registration.hbs';
+import template from './signup.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
 import { validateInputs } from '../../utils/Valid';
 
-export class RegistrationPage extends Block {
+export class SignUpPage extends Block {
   constructor() {
     super();
+
+    // this.setProps({
+    //   onClick: this.onSignUp.bind(this)
+    // })
+  }
+
+  onSignUp = () => {
+    const data: Record<string, unknown> ={}
+    const element = Object.keys(this.children)
+
+    const inputs = document.querySelectorAll('inputEmail')
+
+    element.forEach((input) => {
+
+      const g = document.getElementById('inputEmail')
+      console.log(input)
+      // data[input.currenttarget.name] = input.value
+    })
+
+    console.log(inputs)
+    console.log(this.children.id)
   }
 
   protected initChildren() {
@@ -18,7 +39,7 @@ export class RegistrationPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-
+          this.onSignUp()
           validateInputs(
             { elementId: 'email', regexp: PATTERN_VALIDATION.email },
             { elementId: 'login', regexp: PATTERN_VALIDATION.login },

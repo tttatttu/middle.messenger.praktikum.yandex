@@ -11,17 +11,6 @@ interface Options {
   data?: any;
 }
 
-// function queryStringify(data) {
-//   if (typeof data !== 'object') {
-//     throw new Error('Data must be object');
-//   }
-//
-//   const keys = Object.keys(data);
-//   return keys.reduce((result, key, index) => {
-//     return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-//   }, '?');
-// }
-
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2'
   protected endpoint: string
@@ -29,14 +18,6 @@ export default class HTTPTransport {
   constructor(endpoint: string) {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`
   }
-
-  // public get = (url, options: Options = {}) => {
-  //   if (options.data) {
-  //     url += queryStringify(options.data);
-  //   }
-  //
-  //   return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
-  // };
 
   public get<Response>(path = '/'):Promise<Response> {
     return this.request<Response>(this.endpoint + path)
