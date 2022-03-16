@@ -19,11 +19,11 @@ export default class AuthApi extends BaseAPI {
         super('/auth');
     }
     signUp(data: SignUpData): Promise<unknown> {
-        return this.http.post('.signup', data)
+        return this.http.post('/signup', data)
     }
 
     signIn(data: SignInData): Promise<unknown> {
-        return this.http.post('.signin', data)
+        return this.http.post('/signin', data)
     }
 
     create = undefined

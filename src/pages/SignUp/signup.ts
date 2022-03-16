@@ -4,6 +4,8 @@ import template from './signup.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
 import { validateInputs } from '../../utils/Valid';
+import AuthController, {ControllerSignUpData} from "../../controllers/AuthController";
+import {SignUpData} from "../../api/AuthApi";
 
 export class SignUpPage extends Block {
   constructor() {
@@ -14,21 +16,30 @@ export class SignUpPage extends Block {
     // })
   }
 
-  onSignUp = () => {
+  onSignUp =  async () => {
     const data: Record<string, unknown> ={}
+
     const element = Object.keys(this.children)
+    const childKey =  element.filter((item) => item !== 'button')
 
-    const inputs = document.querySelectorAll('inputEmail')
+    childKey.forEach((input) => {
+      const key = input.substr(5).toLocaleLowerCase()
+      const inputData = document.getElementById(key)
+      const text = document.getElementById(inputData?.id)?.value;
 
-    element.forEach((input) => {
-
-      const g = document.getElementById('inputEmail')
-      console.log(input)
-      // data[input.currenttarget.name] = input.value
+      data[inputData?.name] = text
     })
+    //
+    console.log(data)
 
-    console.log(inputs)
-    console.log(this.children.id)
+
+
+    try {
+      await AuthController.signUp(data as ControllerSignUpData)
+    } catch (e) {
+      console.log(e)
+      alert(e.message)
+    }
   }
 
   protected initChildren() {
@@ -39,7 +50,9 @@ export class SignUpPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
+
           this.onSignUp()
+
           validateInputs(
             { elementId: 'email', regexp: PATTERN_VALIDATION.email },
             { elementId: 'login', regexp: PATTERN_VALIDATION.login },
@@ -49,6 +62,7 @@ export class SignUpPage extends Block {
             { elementId: 'password', regexp: PATTERN_VALIDATION.password },
             { elementId: 'password_again', regexp: PATTERN_VALIDATION.password_again },
           );
+
         },
       },
     });
@@ -75,7 +89,7 @@ export class SignUpPage extends Block {
     this.children.inputName = new Input({
       type: 'text',
       id: 'name',
-      name: 'name',
+      name: 'first_name',
       minlength: '3',
       maxlength: '20',
       placeholder: 'Имя',
@@ -86,7 +100,7 @@ export class SignUpPage extends Block {
     this.children.inputSurName = new Input({
       type: 'text',
       id: 'surname',
-      name: 'surname',
+      name: 'second_name',
       minlength: '3',
       maxlength: '20',
       placeholder: 'Фамилия',
@@ -116,7 +130,7 @@ export class SignUpPage extends Block {
     });
     this.children.inputPasswordAgain = new Input({
       type: 'text',
-      id: 'password_again',
+      id: 'passwordagain',
       name: 'password_again',
       minlength: '8',
       maxlength: '40',

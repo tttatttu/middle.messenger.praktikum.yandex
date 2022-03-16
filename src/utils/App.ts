@@ -4,7 +4,7 @@ import {SignUpPage} from '../pages/SignUp/signup';
 // import {errorPage} from '../pages/errors/error';
 import {ProfilePage} from '../pages/Profile/profile';
 import {chatsPage} from '../pages/Chat/chat';
-import {AuthorizationPage} from "../pages/Authorization/authorization";
+import {AuthorizationPage, SignInPage} from "../pages/SignIn/signin";
 import Router from "./Router";
 // import {chatPage} from '../pages/Chat/chat/id';
 
@@ -14,7 +14,8 @@ export const init = () => {
 
     router
 
-        .use('/', SignUpPage)
+        .use('/signup', SignUpPage)
+        .use('/signin', SignInPage)
         .use('/settings', ProfilePage)
         .use('/messenger', chatsPage)
         // .use('/', AuthorizationPage)

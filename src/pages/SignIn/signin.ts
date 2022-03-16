@@ -1,11 +1,11 @@
 import Block from '../../utils/Block';
 import { Button } from '../../components/Button/button';
-import template from './authorization.hbs';
+import template from './signin.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
 import { validateInputs } from '../../utils/Valid';
 
-export class AuthorizationPage extends Block {
+export class SignInPage extends Block {
   constructor() {
     super();
   }

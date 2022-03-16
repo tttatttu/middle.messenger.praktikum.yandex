@@ -1,5 +1,5 @@
 import { renderDOM } from './utils/renderDOM';
-import { AuthorizationPage } from './pages/Authorization/authorization';
+import { AuthorizationPage } from './pages/SignIn/signin';
 import { ChatPage } from './pages/Chat/chat';
 import { ProfilePage } from './pages/Profile/profile';
 import { ProfileEditPage } from './pages/ProfileEdit/profileEdit';
