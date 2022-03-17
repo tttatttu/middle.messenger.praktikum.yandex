@@ -1,6 +1,6 @@
 import Block from "./Block";
 
-function isEqual(lhs, rhs) {
+export function isEqual(lhs, rhs) {
     return lhs === rhs;
 }
 

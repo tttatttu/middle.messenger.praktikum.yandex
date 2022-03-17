@@ -30,8 +30,9 @@ const profiles = [
 ];
 
 export class ProfilePage extends Block {
-  constructor() {
-    super();
+  constructor(props) {
+    console.log(props)
+    super({...props});
   }
 
   protected initChildren() {

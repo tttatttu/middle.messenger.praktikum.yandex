@@ -4,10 +4,32 @@ import template from './signin.hbs';
 import { Input } from '../../components/Input/input';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
 import { validateInputs } from '../../utils/Valid';
+import AuthController, {ControllerSignUpData} from "../../controllers/AuthController";
+import {SignInData} from "../../api/AuthApi";
 
 export class SignInPage extends Block {
   constructor() {
     super();
+  }
+
+  async onSignIn() {
+    // const data: Record<string, unknown> ={}
+
+    const data = validateInputs(
+        { elementId: 'login', regexp: PATTERN_VALIDATION.login },
+        { elementId: 'password', regexp: PATTERN_VALIDATION.password },
+    );
+    console.log('1', data)
+    if (data) {
+      try {
+        await AuthController.signIn(data as SignInData).then(() => alert("Авторизация прошла успешно!"))
+
+      } catch (e) {
+        console.log(e)
+        // alert(e.reason)
+      }
+    }
+
   }
 
   protected initChildren() {
@@ -18,11 +40,7 @@ export class SignInPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-
-          validateInputs(
-            { elementId: 'login', regexp: PATTERN_VALIDATION.login },
-            { elementId: 'password', regexp: PATTERN_VALIDATION.password },
-          );
+          this.onSignIn()
         },
       },
     });

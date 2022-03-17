@@ -19,6 +19,7 @@ export default class AuthApi extends BaseAPI {
         super('/auth');
     }
     signUp(data: SignUpData): Promise<unknown> {
+        // console.log('1', data)
         return this.http.post('/signup', data)
     }
 
@@ -26,8 +27,17 @@ export default class AuthApi extends BaseAPI {
         return this.http.post('/signin', data)
     }
 
+    logout(): Promise<unknown> {
+        return this.http.post('/logout')
+    }
+
+    read(): Promise<unknown> {
+        return this.http.get('/user')
+    }
+
+
     create = undefined
-    read = undefined
+    // read = undefined
     update = undefined
     delete = undefined
 }

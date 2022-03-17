@@ -77,3 +77,5 @@ function queryString(data:Indexed) {
 
     return getParams(data).map(arr => arr.join('=')).join('&');
 }
+// import {withStore} from "./Store";
+// export default withUser = withStore((state) => ({...state.currentUser}))

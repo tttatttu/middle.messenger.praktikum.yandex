@@ -9,40 +9,47 @@ import {SignUpData} from "../../api/AuthApi";
 
 export class SignUpPage extends Block {
   constructor() {
-    super();
+    super(
+        {
 
-    // this.setProps({
-    //   onClick: this.onSignUp.bind(this)
-    // })
+    }
+    );
+
   }
 
-  onSignUp =  async () => {
-    const data: Record<string, unknown> ={}
+  async onSignUp() {
+    const data = validateInputs(
+        { elementId: 'email', regexp: PATTERN_VALIDATION.email },
+        { elementId: 'login', regexp: PATTERN_VALIDATION.login },
+        { elementId: 'name', regexp: PATTERN_VALIDATION.name },
+        { elementId: 'surname', regexp: PATTERN_VALIDATION.surname },
+        { elementId: 'phone', regexp: PATTERN_VALIDATION.phone },
+        { elementId: 'password', regexp: PATTERN_VALIDATION.password },
+        { elementId: 'password_again', regexp: PATTERN_VALIDATION.password_again },
+    );
 
-    const element = Object.keys(this.children)
-    const childKey =  element.filter((item) => item !== 'button')
+    if (data) {
+      try {
+        await AuthController.signUp(data as ControllerSignUpData).then(() => alert("Поздравляем, Вы в нашем чате!"))
 
-    childKey.forEach((input) => {
-      const key = input.substr(5).toLocaleLowerCase()
-      const inputData = document.getElementById(key)
-      const text = document.getElementById(inputData?.id)?.value;
-
-      data[inputData?.name] = text
-    })
-    //
-    console.log(data)
-
-
-
-    try {
-      await AuthController.signUp(data as ControllerSignUpData)
-    } catch (e) {
-      console.log(e)
-      alert(e.message)
+      } catch (e) {
+        console.log(e)
+        // alert(e.reason)
+      }
     }
+
   }
 
   protected initChildren() {
+    this.children.buttonLogout = new Button({
+      text: 'Выйти',
+      type: 'button',
+      className: 'popup__button button_blueviolet',
+      events: {
+        click: () => {
+          AuthController.logout()}
+      }
+    })
     this.children.button = new Button({
       text: 'Зарегистрироваться',
       type: 'submit',
@@ -50,19 +57,7 @@ export class SignUpPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-
           this.onSignUp()
-
-          validateInputs(
-            { elementId: 'email', regexp: PATTERN_VALIDATION.email },
-            { elementId: 'login', regexp: PATTERN_VALIDATION.login },
-            { elementId: 'name', regexp: PATTERN_VALIDATION.name },
-            { elementId: 'surname', regexp: PATTERN_VALIDATION.surname },
-            { elementId: 'phone', regexp: PATTERN_VALIDATION.phone },
-            { elementId: 'password', regexp: PATTERN_VALIDATION.password },
-            { elementId: 'password_again', regexp: PATTERN_VALIDATION.password_again },
-          );
-
         },
       },
     });
@@ -130,7 +125,7 @@ export class SignUpPage extends Block {
     });
     this.children.inputPasswordAgain = new Input({
       type: 'text',
-      id: 'passwordagain',
+      id: 'password_again',
       name: 'password_again',
       minlength: '8',
       maxlength: '40',

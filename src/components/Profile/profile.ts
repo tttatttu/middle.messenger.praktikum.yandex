@@ -12,6 +12,7 @@ interface ProfilesProps {
 
 export class Profile extends Block {
   constructor(props: ProfilesProps) {
+    // console.log(props)
     super(props);
   }
 

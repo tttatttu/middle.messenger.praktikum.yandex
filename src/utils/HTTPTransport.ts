@@ -59,12 +59,28 @@ export default class HTTPTransport {
       xhr.open(method, url);
 
       xhr.onreadystatechange = () => {
+        if (xhr.readyState != 4) return;
+        // resolve(xhr.response)
+        // resolve(xhr.response)
+        // console.log(xhr.response)
+        // return xhr.response
         if (xhr.status < 400) {
           resolve(xhr.response)
         } else {
           reject(xhr.response)
         }
       }
+
+      // xhr.onreadystatechange = function() { // (3)
+      //   if (xhr.readyState != 4) return;
+      //
+      //   if (xhr.status != 200) {
+      //     alert(xhr.status + ': ' + xhr.statusText);
+      //   } else {
+      //     alert(xhr.responseText);
+      //   }
+      //
+      // }
 
       xhr.onabort = () => reject({reason: 'abort'})
       xhr.onerror = () => reject({reason: 'network error'})
@@ -80,6 +96,7 @@ export default class HTTPTransport {
       } else {
         xhr.send(JSON.stringify(data));
       }
+
     });
   }
 }
