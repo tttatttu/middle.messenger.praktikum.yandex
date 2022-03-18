@@ -3,42 +3,16 @@ import template from '../Chat/chat.hbs';
 import {Input} from '../../components/Input/input';
 import {Link} from '../../components/Link/link';
 import {ChatHeader} from '../../components/ChatHeader/chatHeader';
-import {UserList} from '../../components/UserList/userList';
 import {Button} from '../../components/Button/button';
 import {Message} from '../../components/Message/message';
 import {validateInputs} from '../../utils/Valid';
 import {PATTERN_VALIDATION} from '../../utils/CONST';
 import AuthController from "../../controllers/AuthController";
 import ChatController from "../../controllers/ChatController";
+import UserList from "../../components/UserList/index";
+import store from "../../utils/Store";
 
-const users = [
-  {
-    alt: 'avatar',
-    href: 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg',
-    className: 'chat__profile',
-    name: 'Name',
-    time: '12:23',
-    text: 'Это может быть самый длинный текст в мире, но я постараюсь его вписать в это ограниченное пространство',
-    unread: 3,
-  },
-  {
-    alt: 'avatar',
-    href: 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg',
-    className: 'chat__profile',
-    name: 'Vasya',
-    time: '12:23',
-    text: 'Это может быть самый длинный текст в мире, но я постараюсь его вписать в это ограниченное пространство',
-    unread: 15,
-  },
-  {
-    alt: 'avatar',
-    href: 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg',
-    className: 'chat__profile',
-    name: 'Vasya',
-    time: '12:23',
-    text: 'Это может быть самый длинный текст в мире, но я постараюсь его вписать в это ограниченное пространство',
-  },
-];
+
 const messages = [
   {
     name: 'Name',
@@ -99,20 +73,12 @@ const messages = [
   },
 ];
 
-let chats
 export class ChatPage extends Block {
   constructor(props) {
 
-    // chats = Object.entries(props)
-    chats = props
-    // props.state.chatList
-    console.log(props)
     super({
       ...props,
-      // getProfileInfo: () => this.getProfileInfo()
     });
-
-    console.log(chats.state)
   }
 
   async getProfileInfo() {
@@ -127,8 +93,6 @@ export class ChatPage extends Block {
     await ChatController.getChats()
   }
   onSendMessage() {
-    console.log(chats)
-    // ChatController.getChats()
     const data = validateInputs({ elementId: 'message', regexp: PATTERN_VALIDATION.message });
     if (data) {
       console.log('Сообщение отправлено!', data);
@@ -136,12 +100,62 @@ export class ChatPage extends Block {
   }
 
   protected initChildren() {
-    console.log(chats?.state)
-    // this.children.user = new UserList(this.props?.state);
-    this.children.user = new UserList( [chats?.state]);
+    this.children.user = new UserList({});
+    this.children.inputCreateChat = new Input({
+      type: 'text',
+      id: 'title',
+      name: 'title',
+      placeholder: 'Новый_чат',
+      className: 'chat__message',
+    });
+    this.children.buttonCreateChat = new Button({
+      type: 'submit',
+      className: 'chat__btn',
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const title = document.getElementById('title').value
+
+          ChatController.createChat({title})
+        },
+      },
+    });
+    this.children.buttonAddUserToChat = new Button({
+      type: 'button',
+      text: 'Добавить пользователя',
+      events: {
+        click: () => {
+          const userId = prompt('Введите ID пользователя для добавления в текущий чат');
+          if (userId) {
+            ChatController.addUserToChat(store.getState().currentChatId, userId)
+                .then(() => alert('Пользователь добавлен!'))
+                .catch((error) => alert(`Ошибка: ${error ? error.reason : ''}`));
+          } else {
+            alert('Поле не должно быть пустым!');
+          }
+        },
+      },
+    });
+    this.children.buttonDeleteUserFromChat = new Button({
+      type: 'button',
+      text: 'Удалить пользователя',
+      events: {
+        click: () => {
+            const userId = prompt('Введите ID пользователя для удаления из текущего чата');
+            if (userId) {
+              ChatController.deleteUserFromChat(store.getState().currentChatId, userId)
+                  .then(() => alert('Пользователь удалён!'))
+                  .catch((error) => alert(`Ошибка: ${error ? error.reason : ''}`));
+            } else {
+              alert('Поле не должно быть пустым!');
+            }
+
+        },
+      },
+    });
     this.children.link = new Link({
       text: 'Профиль >',
-      href: '../ProfileEdit/ProfileEdit.hbs',
+      href: '/profile',
       className: 'chat__profile',
     });
     this.children.inputSearch = new Input({
@@ -194,7 +208,6 @@ export class ChatPage extends Block {
   }
 
   render() {
-    // this.onGetChat()
     return this.compile(template, {});
   }
 }

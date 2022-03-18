@@ -1,6 +1,6 @@
-import { EventBus } from './EventBus';
+import {EventBus} from './EventBus';
 // @ts-ignore
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 
 class Block {
   static EVENTS = {

@@ -15,6 +15,8 @@ export class Button extends Block {
     super(props);
   }
 
+
+
   render() {
     return this.compile(template, { ...this.props });
   }

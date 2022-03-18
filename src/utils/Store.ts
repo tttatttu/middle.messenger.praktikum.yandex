@@ -35,6 +35,8 @@ export interface ChatsData {
 interface StoreData {
     chatList?: ChatsData;
     currentUser?: UserData;
+    currentChatId?: number;
+    chatToTitle?: string;
 }
 
 class Store extends EventBus{
@@ -67,6 +69,7 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
 
                 if (!isEqual(state, newState)) {
                     this.setProps({ ...newState });
+                    state = newState
                 }
             });
         }
@@ -74,3 +77,6 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
 };
 
 export default store
+
+
+export const withChats = withStore((state) => ({chatList: state.chatList}))

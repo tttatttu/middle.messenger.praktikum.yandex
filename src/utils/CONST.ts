@@ -14,3 +14,5 @@ export const PATTERN_VALIDATION = {
   display_name: /^[А-ЯЁA-Z][a-zа-яё-]{1,29}$/,
   message: /./,
 };
+
+export const avatar = 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'

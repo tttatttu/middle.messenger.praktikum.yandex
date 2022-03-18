@@ -79,3 +79,17 @@ function queryString(data:Indexed) {
 }
 // import {withStore} from "./Store";
 // export default withUser = withStore((state) => ({...state.currentUser}))
+
+export const getParentDataSetParam = (element: HTMLElement, className: string, dataSetParam: string): string | undefined => {
+    let copyElement = element;
+    while (copyElement.className !== className) {
+        if (copyElement.parentElement !== null) {
+            copyElement = copyElement.parentElement;
+        } else {
+            return undefined;
+        }
+    }
+    return copyElement.dataset[dataSetParam];
+};
+
+

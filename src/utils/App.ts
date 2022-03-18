@@ -1,10 +1,8 @@
-
 // import {loginPage} from '../pages/';
 import {SignUpPage} from '../pages/SignUp/signup';
 // import {errorPage} from '../pages/errors/error';
-import { SignInPage} from "../pages/SignIn/signin";
+import {SignInPage} from "../pages/SignIn/signin";
 import Router from "./Router";
-import AuthController from "../controllers/AuthController";
 import ProfilePage from "../pages/Profile/index";
 import ChatController from "../controllers/ChatController";
 import ChatPage from "../pages/Chat/index";
@@ -43,15 +41,4 @@ export const init =  () => {
 
     router.start()
 
-    // window.addEventListener('click', (e: MouseEvent) => {
-    //     const target = e.target as HTMLElement;
-    //     const href = target?.getAttribute('href') || target?.closest('a')?.getAttribute('href');
-    //
-    //     if (href && href[0] === '/') {
-    //         e.preventDefault();
-    //         router.go(href);
-    //     }
-    // });
-    // //
-    // window.onload = router.start;
 };

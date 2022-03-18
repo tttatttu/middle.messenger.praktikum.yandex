@@ -10,14 +10,25 @@ class ChatController {
     }
     async getChats() {
         const response = await this.api.read()
-        console.log(response)
+        // console.log(response)
         store.set('chatList', response)
     }
 
-    async createChat() {
-        const response = await this.api.create('z')
+    async createChat(data) {
+        const response = await this.api.create(data)
         console.log(response)
-        // store.set('chatList', response)
+        store.set('chatToTitle', response)
+    }
+    async addUserToChat(chatId, userId) {
+        return this.api.addUserToChat(chatId, userId);
+    }
+
+   deleteUserFromChat(chatId, userId) {
+        return this.api.deleteUserFromChat(chatId, userId);
+    }
+
+    async getChatUsers(data) {
+        return this.api.getChatUsers(data);
     }
 }
 
