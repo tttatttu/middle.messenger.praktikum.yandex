@@ -1,42 +1,47 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
 import { Profile } from '../../components/Profile/profile';
+import {Button} from "../../components/Button/button";
+import AuthController from "../../controllers/AuthController";
+import ChatController from "../../controllers/ChatController";
 
-const profiles = [
-  {
-    title: 'Почта',
-    text: 'email',
-  },
-  {
-    title: 'Логин',
-    text: 'login',
-  },
-  {
-    title: 'Имя',
-    text: 'first_name',
-  },
-  {
-    title: 'Фамилия',
-    text: 'second_name',
-  },
-  {
-    title: 'Имя в чате',
-    text: 'display_name',
-  },
-  {
-    title: 'Телефон',
-    text: 'phone',
-  },
-];
+const titleList = {
+  'email': 'Почта',
+  'login': 'Логин',
+  'first_name': 'Имя',
+  'second_name': 'Фамилия',
+  'display_name': 'Имя в чате',
+  'phone': 'Телефон'
+}
 
+let profile
 export class ProfilePage extends Block {
+
   constructor(props) {
-    console.log(props)
-    super({...props});
+    profile = Object.entries(props).map((el) => ({title: titleList[el[0]], text: el[1]})).filter(({title}) => title !== 'id' && title !== 'avatar' && title)
+    super({...props, getChats: () => this.getChats()});
+
+  }
+
+  async getChats() {
+    try {
+      await ChatController.getChats();
+    } catch (error) {
+      alert(`Ошибка в запросе чатов! ${error ? error.reason : ''}`);
+    }
   }
 
   protected initChildren() {
-    this.children.profile = new Profile({ profiles });
+    this.children.buttonLogout = new Button({
+      text: 'Выйти',
+      type: 'button',
+      className: 'popup__button button_blueviolet',
+      events: {
+        click: () => {
+          AuthController.logout()}
+      }
+    })
+    this.children.profile = new Profile({profiles: [...profile]});
   }
 
   render() {

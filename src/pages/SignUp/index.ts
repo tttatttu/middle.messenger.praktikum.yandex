@@ -1,1 +1,4 @@
-export { SignUpPage as default } from './signup';
+import { SignUpPage } from './signup';
+import {withUser} from "../Profile/index";
+
+export default withUser(SignUpPage)

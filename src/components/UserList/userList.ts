@@ -2,13 +2,14 @@ import Block from '../../utils/Block';
 import template from './userList.hbs';
 
 interface UserListProps {
-  alt: string;
-  href: string;
-  className: string;
-  name: string;
-  time: string;
-  text: string;
-  unread?: number;
+  avatar: string;
+  className?: string;
+  id: string;
+  time?: string;
+  title: string;
+  last_message?: string;
+  unread_count?: number;
+  created_by: string;
 }
 
 interface UsersListProps {

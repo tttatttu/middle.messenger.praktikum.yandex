@@ -2,14 +2,14 @@
   {{#each users}}
     <a href='' class='users__link'>
       <li class='user'>
-        <img class='user__img' src={{href}} alt={{alt}} />
+        <img class='user__img' src={{avatar}} alt='avatar' />
         <div class='user__info'>
-          <h2 class='user__title'>{{name}}</h2>
+          <h2 class='user__title'>{{id}}</h2>
           <!--                    //добавить признак чье сообщение-->
           {{#if name}}
-            <span class='user__text'>{{text}}</span>
+            <span class='user__text'>{{title}}</span>
           {{else}}
-            <span class='user__text'><h3 class='user__subtitle'>Ты: </h3>{{text}}</span>
+            <span class='user__text'><h3 class='user__subtitle'>Ты: </h3>{{last_message}}</span>
           {{/if}}
         </div>
         <div class='user__helper'>
@@ -19,7 +19,7 @@
         {{button}}
         {{#if unread}}
           <div class='user__count'>
-            {{unread}}
+            {{unread_count}}
           </div>
         {{/if}}
       </li>

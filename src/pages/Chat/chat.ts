@@ -8,6 +8,8 @@ import { Button } from '../../components/Button/button';
 import { Message } from '../../components/Message/message';
 import { validateInputs } from '../../utils/Valid';
 import { PATTERN_VALIDATION } from '../../utils/CONST';
+import AuthController from "../../controllers/AuthController";
+import ChatController from "../../controllers/ChatController";
 
 const users = [
   {
@@ -97,12 +99,40 @@ const messages = [
   },
 ];
 
+let chats
 export class ChatPage extends Block {
-  constructor() {
-    super();
+  constructor(props) {
+
+    chats = props
+    console.log(props)
+    super({
+      ...props,
+      // getProfileInfo: () => this.getProfileInfo()
+    });
+    console.log(props)
+  }
+
+  async getProfileInfo() {
+    try {
+      await AuthController.featchUser();
+    } catch (e) {
+      alert('Ошибка при получении данных пользователя", e');
+    }
+  }
+
+  async onGetChat () {
+    await ChatController.getChats()
+  }
+  onSendMessage() {
+    // ChatController.getChats()
+    const data = validateInputs({ elementId: 'message', regexp: PATTERN_VALIDATION.message });
+    if (data) {
+      console.log('Сообщение отправлено!', data);
+    }
   }
 
   protected initChildren() {
+    console.log(chats)
     this.children.user = new UserList({ users });
     this.children.link = new Link({
       text: 'Профиль >',
@@ -135,7 +165,7 @@ export class ChatPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          validateInputs({ elementId: 'message', regexp: PATTERN_VALIDATION.message });
+          this.onSendMessage()
         },
       },
     });
@@ -159,6 +189,7 @@ export class ChatPage extends Block {
   }
 
   render() {
+    // this.onGetChat()
     return this.compile(template, {});
   }
 }

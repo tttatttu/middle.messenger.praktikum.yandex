@@ -22,7 +22,7 @@ export class SignInPage extends Block {
     console.log('1', data)
     if (data) {
       try {
-        await AuthController.signIn(data as SignInData).then(() => alert("Авторизация прошла успешно!"))
+        await AuthController.signIn(data as SignInData).then(() => console.log("Авторизация прошла успешно"))
 
       } catch (e) {
         console.log(e)

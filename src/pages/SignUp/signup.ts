@@ -41,15 +41,6 @@ export class SignUpPage extends Block {
   }
 
   protected initChildren() {
-    this.children.buttonLogout = new Button({
-      text: 'Выйти',
-      type: 'button',
-      className: 'popup__button button_blueviolet',
-      events: {
-        click: () => {
-          AuthController.logout()}
-      }
-    })
     this.children.button = new Button({
       text: 'Зарегистрироваться',
       type: 'submit',

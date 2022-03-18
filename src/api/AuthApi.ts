@@ -19,7 +19,6 @@ export default class AuthApi extends BaseAPI {
         super('/auth');
     }
     signUp(data: SignUpData): Promise<unknown> {
-        // console.log('1', data)
         return this.http.post('/signup', data)
     }
 

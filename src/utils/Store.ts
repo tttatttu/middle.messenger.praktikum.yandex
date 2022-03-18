@@ -2,6 +2,7 @@ import {EventBus} from "./EventBus";
 import {Indexed, set} from "./helpers";
 import Block from "./Block";
 import {isEqual} from "./Router";
+import {SignUpData} from "../api/AuthApi";
 
 export enum StoreEvents {
     Updated = 'updated'
@@ -17,8 +18,22 @@ interface UserData {
     phone: string;
     avatar: string;
 }
+export interface ChatsData {
+    id: number | string;
+    title: string;
+    avatar: string;
+    unread_count: any;
+    last_message: {
+        user: SignUpData;
+        time: string;
+        content: string
+    }
+
+}
+
 
 interface StoreData {
+    chatList?: ChatsData;
     currentUser?: UserData;
 }
 

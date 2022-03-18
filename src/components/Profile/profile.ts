@@ -10,13 +10,14 @@ interface ProfilesProps {
   profiles: ProfileProps[];
 }
 
+let list
 export class Profile extends Block {
   constructor(props: ProfilesProps) {
-    // console.log(props)
+    list = props
     super(props);
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template,  {...this.props} );
   }
 }
