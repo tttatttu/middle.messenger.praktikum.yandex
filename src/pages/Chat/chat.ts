@@ -1,13 +1,13 @@
 import Block from '../../utils/Block';
 import template from '../Chat/chat.hbs';
-import { Input } from '../../components/Input/input';
-import { Link } from '../../components/Link/link';
-import { ChatHeader } from '../../components/ChatHeader/chatHeader';
-import { UserList } from '../../components/UserList/userList';
-import { Button } from '../../components/Button/button';
-import { Message } from '../../components/Message/message';
-import { validateInputs } from '../../utils/Valid';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
+import {Input} from '../../components/Input/input';
+import {Link} from '../../components/Link/link';
+import {ChatHeader} from '../../components/ChatHeader/chatHeader';
+import {UserList} from '../../components/UserList/userList';
+import {Button} from '../../components/Button/button';
+import {Message} from '../../components/Message/message';
+import {validateInputs} from '../../utils/Valid';
+import {PATTERN_VALIDATION} from '../../utils/CONST';
 import AuthController from "../../controllers/AuthController";
 import ChatController from "../../controllers/ChatController";
 
@@ -103,13 +103,16 @@ let chats
 export class ChatPage extends Block {
   constructor(props) {
 
+    // chats = Object.entries(props)
     chats = props
+    // props.state.chatList
     console.log(props)
     super({
       ...props,
       // getProfileInfo: () => this.getProfileInfo()
     });
-    console.log(props)
+
+    console.log(chats.state)
   }
 
   async getProfileInfo() {
@@ -124,6 +127,7 @@ export class ChatPage extends Block {
     await ChatController.getChats()
   }
   onSendMessage() {
+    console.log(chats)
     // ChatController.getChats()
     const data = validateInputs({ elementId: 'message', regexp: PATTERN_VALIDATION.message });
     if (data) {
@@ -132,8 +136,9 @@ export class ChatPage extends Block {
   }
 
   protected initChildren() {
-    console.log(chats)
-    this.children.user = new UserList({ users });
+    console.log(chats?.state)
+    // this.children.user = new UserList(this.props?.state);
+    this.children.user = new UserList( [chats?.state]);
     this.children.link = new Link({
       text: 'Профиль >',
       href: '../ProfileEdit/ProfileEdit.hbs',

@@ -25,7 +25,7 @@ export const init =  () => {
     // router.go('/profile')
 
     // router.go('/messenger')
-    // ChatController.getChats()
+    ChatController.getChats()
 
     // try {
     //     AuthController.featchUser().then(() => { router.go('/messages')})

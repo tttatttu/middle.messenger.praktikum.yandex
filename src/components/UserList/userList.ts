@@ -18,10 +18,12 @@ interface UsersListProps {
 
 export class UserList extends Block {
   constructor(props: UsersListProps) {
-    super(props);
+    console.log(props[0])
+    super();
   }
 
   render() {
+    console.log(this.props )
     return this.compile(template, { ...this.props });
   }
 }
