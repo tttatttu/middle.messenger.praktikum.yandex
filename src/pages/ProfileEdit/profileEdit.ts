@@ -4,21 +4,35 @@ import {Button} from '../../components/Button/button';
 import {Input} from '../../components/Input/input';
 import {PATTERN_VALIDATION} from '../../utils/CONST';
 import {validateInputs} from '../../utils/Valid';
-import AuthController from "../../controllers/AuthController";
 import UsersController from "../../controllers/UsersController";
 import {SignUpData} from "../../api/AuthApi";
+import Router from "../../utils/Router";
+import AuthController from "../../controllers/AuthController";
+import store from "../../utils/Store";
+
 
 export class ProfileEditPage extends Block {
+
     constructor(props) {
         super({
             ...props,
+
         });
+        this.setProps({
+            user: AuthController.fetchUser()
+        })
+        console.log(this.props.user)
     }
 
-    componentDidMount() {
-        super.componentDidMount();
-        AuthController.fetchUser()
+    async componentDidMount() {
+        const user = AuthController.fetchUser()
+        await store.set('currentUser', user)
+
+
+        console.log(user)
+        return user
     }
+
 
     async onUpdateProfile() {
         const data = validateInputs(
@@ -41,16 +55,31 @@ export class ProfileEditPage extends Block {
 
 
     protected initChildren() {
-        this.children.buttonLogout = new Button({
-            text: 'Выйти',
+        console.log(this.props)
+        console.log(this.props.user)
+        // console.log(`${this?.props?.email}`)
+        // this.children.buttonLogout = new Button({
+        //     text: 'Выйти',
+        //     type: 'button',
+        //     className: 'popup__button button_blueviolet',
+        //     events: {
+        //         click: () => {
+        //             AuthController.logout()
+        //         }
+        //     }
+        // })
+        this.children.buttonBack = new Button({
+            text: '<<',
             type: 'button',
-            className: 'popup__button button_blueviolet',
+            className: 'profile__button',
             events: {
-                click: () => {
-                    AuthController.logout()
-                }
-            }
-        })
+                click: (e) => {
+                    e.preventDefault();
+                    const router = new Router()
+                    router.go('/profile')
+                },
+            },
+        });
         this.children.button = new Button({
             text: 'Сохранить',
             type: 'submit',
@@ -67,7 +96,7 @@ export class ProfileEditPage extends Block {
             id: 'email-profile',
             name: 'email',
             placeholder: 'Почта',
-            value: this.props.email,
+            value: this?.props?.email,
             required: true,
             className: 'form__input',
             events: this.inputValidation(),
@@ -144,6 +173,7 @@ export class ProfileEditPage extends Block {
     }
 
     render() {
+        // console.log("Props>>>>>>>>",this.props)
         return this.compile(template, {...this.props});
     }
 }

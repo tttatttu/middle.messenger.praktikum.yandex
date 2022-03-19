@@ -27,6 +27,7 @@ export class UserList extends Block {
         click: (e: PointerEvent) => this.addUser(e),
       },
     });
+    console.log(props)
   }
 
   async addUser(e) {

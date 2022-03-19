@@ -17,6 +17,8 @@ export class Profile extends Block {
     super({...props});
   }
 
+
+
   render() {
     console.log(this.props)
     return this.compile(template,  {...this.props} );

@@ -29,7 +29,6 @@ export class SignUpPage extends Block {
 
       } catch (e) {
         console.log(e)
-        // alert(e.reason)
       }
     }
 

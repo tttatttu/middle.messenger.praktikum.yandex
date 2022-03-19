@@ -7,6 +7,7 @@ import {validateInputs} from '../../utils/Valid';
 import UsersController from "../../controllers/UsersController";
 import {UpdatePasswordData} from "../../api/UsersApi";
 import AuthController from "../../controllers/AuthController";
+import Router from "../../utils/Router";
 
 
 export class PasswordEditPage extends Block {
@@ -15,7 +16,6 @@ export class PasswordEditPage extends Block {
     }
 
     async onUpdatePassword() {
-        console.log('fff')
         const data = validateInputs(
             {elementId: 'oldPassword', regexp: PATTERN_VALIDATION.oldPassword},
             {elementId: 'newPassword', regexp: PATTERN_VALIDATION.newPassword},
@@ -28,12 +28,23 @@ export class PasswordEditPage extends Block {
                 AuthController.fetchUser()
             } catch (e) {
                 console.log(e)
-                // alert(e.reason)
             }
         }
     }
 
     protected initChildren() {
+        this.children.buttonBack = new Button({
+            text: '<<',
+            type: 'button',
+            className: 'profile__button',
+            events: {
+                click: (e) => {
+                    e.preventDefault();
+                    const router = new Router()
+                    router.go('/profile')
+                },
+            },
+        });
         this.children.button = new Button({
             text: 'Сохранить',
             type: 'submit',
@@ -42,16 +53,6 @@ export class PasswordEditPage extends Block {
                 click: (e) => {
                     e.preventDefault();
                     this.onUpdatePassword()
-                    // const data = validateInputs(
-                    //     { elementId: 'oldPassword_edit', regexp: PATTERN_VALIDATION.oldPassword },
-                    //     { elementId: 'newPassword', regexp: PATTERN_VALIDATION.newPassword },
-                    //     { elementId: 'newPasswordAgain', regexp: PATTERN_VALIDATION.newPasswordAgain },
-                    // );
-                    // console.log('d', data)
-                    // this.onUpdatePassword()
-
-
-                    // UsersController.updatePassword(data)
                 },
             },
         });

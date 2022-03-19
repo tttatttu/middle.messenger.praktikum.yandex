@@ -23,7 +23,7 @@ export class SignInPage extends Block {
     if (data) {
       try {
         await AuthController.signIn(data as SignInData).then(() => console.log("Авторизация прошла успешно"))
-        AuthController.fetchUser()
+        const user = AuthController.fetchUser()
       } catch (e) {
         console.log(e)
         // alert(e.reason)

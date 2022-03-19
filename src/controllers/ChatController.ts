@@ -10,7 +10,7 @@ class ChatController {
     }
     async getChats() {
         const response = await this.api.read()
-        // console.log(response)
+        console.log(response)
         store.set('chatList', response)
     }
 

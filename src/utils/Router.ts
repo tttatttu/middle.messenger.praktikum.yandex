@@ -6,7 +6,7 @@ export function isEqual(lhs, rhs) {
 
 function render(query, block) {
     const root = document.querySelector(query);
-    // root.innerHTML = ''
+    root.innerHTML = ''
     root.append(block.getContent())
     block.dispatchComponentDidMount()
 

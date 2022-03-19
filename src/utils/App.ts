@@ -5,6 +5,7 @@ import {SignInPage} from "../pages/SignIn/signin";
 import Router from "./Router";
 import {PasswordEditPage} from "../pages/PasswordEdit/PasswordEdit";
 import ProfilePage from "../pages/Profile/index";
+import ChatPage from "../pages/Chat/index";
 import ProfileEditPage from "../pages/ProfileEdit/index";
 // import {chatPage} from '../pages/Chat/chat/id';
 
@@ -19,7 +20,7 @@ export const init = () => {
         .use('/profile', ProfilePage)
         .use('/editprofile', ProfileEditPage)
         .use('/password', PasswordEditPage)
-        // .use('/messages', ChatPage)
+        .use('/messages', ChatPage)
         .use('/', SignInPage)
 
     // router.go('/profile')

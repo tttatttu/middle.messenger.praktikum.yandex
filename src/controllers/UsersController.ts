@@ -19,24 +19,17 @@ class UsersController {
 
     async updateProfile(data: SignUpData) {
         await this.api.updateProfile(data);
+
+        const router = new Router()
+        router.go('/profile')
     }
 
     async updatePassword(data: UpdatePasswordData) {
-        console.log(data)
-        if (data.newPassword_again !== data.newPassword) {
-            // store.set('currentPassword.error','Пароли не совпадают')
-            alert('Пароли не совпадают')
-
-            return
-        }
-
-        const {password_again, ...UpdatePasswordData} = data
+        const {newPassword_again, ...UpdatePasswordData} = data
         await this.api.updatePassword(UpdatePasswordData)
 
         const router = new Router()
         router.go('/profile')
-
-
     }
 
 }
