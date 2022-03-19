@@ -6,7 +6,10 @@ export function isEqual(lhs, rhs) {
 
 function render(query, block) {
     const root = document.querySelector(query);
+    // root.innerHTML = ''
     root.append(block.getContent())
+    block.dispatchComponentDidMount()
+
     return root;
 }
 
@@ -48,6 +51,7 @@ class Route {
         }
 
         this._block.show();
+        // render(this._props.rootQuery, this._block);
     }
 }
 

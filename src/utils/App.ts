@@ -3,13 +3,12 @@ import {SignUpPage} from '../pages/SignUp/signup';
 // import {errorPage} from '../pages/errors/error';
 import {SignInPage} from "../pages/SignIn/signin";
 import Router from "./Router";
+import {PasswordEditPage} from "../pages/PasswordEdit/PasswordEdit";
 import ProfilePage from "../pages/Profile/index";
-import ChatController from "../controllers/ChatController";
-import ChatPage from "../pages/Chat/index";
+import ProfileEditPage from "../pages/ProfileEdit/index";
 // import {chatPage} from '../pages/Chat/chat/id';
 
-export const init =  () => {
-
+export const init = () => {
 
 
     const router = new Router();
@@ -18,19 +17,22 @@ export const init =  () => {
         .use('/signup', SignUpPage)
         .use('/signin', SignInPage)
         .use('/profile', ProfilePage)
-        .use('/messages', ChatPage);
+        .use('/editprofile', ProfileEditPage)
+        .use('/password', PasswordEditPage)
+        // .use('/messages', ChatPage)
+        .use('/', SignInPage)
 
     // router.go('/profile')
 
     // router.go('/messenger')
-    ChatController.getChats()
+    // ChatController.getChats()
 
-    // try {
-    //     AuthController.featchUser().then(() => { router.go('/messages')})
-    // } catch (e) {
-    //     console.log("Ошибка при получении данных пользователя", e)
-    //     router.go('/signin')
-    // }
+
+    // AuthController.fetchUser().then(() => { router.go('/messages')})
+    //     .catch ((e) => {
+    // console.log("Ошибка при получении данных пользователя", e)
+    // router.go('/signin')})
+
 
     // ChatController.getChats()
     // // ChatController.createChat('z')

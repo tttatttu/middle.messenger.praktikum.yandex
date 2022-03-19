@@ -29,7 +29,7 @@ class AuthController {
             return
         }
 
-        await this.featchUser()
+        await this.fetchUser()
 
         const router = new Router()
         router.go('/profile')
@@ -37,6 +37,8 @@ class AuthController {
 
     async signIn(data: SignInData) {
         await this.api.signIn(data)
+
+        await this.fetchUser()
 
         const router = new Router()
         router.go('/profile')
@@ -49,9 +51,9 @@ class AuthController {
         router.go('/signin')
     }
 
-    async featchUser() {
+    async fetchUser() {
         const user = await this.api.read()
-
+console.log(user)
         store.set('currentUser', user)
     }
 }

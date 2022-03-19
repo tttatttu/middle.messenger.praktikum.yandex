@@ -78,5 +78,5 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
 
 export default store
 
-
+export const withUser = withStore((state) => ({...state.currentUser}))
 export const withChats = withStore((state) => ({chatList: state.chatList}))

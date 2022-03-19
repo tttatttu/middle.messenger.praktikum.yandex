@@ -83,7 +83,7 @@ export class ChatPage extends Block {
 
   async getProfileInfo() {
     try {
-      await AuthController.featchUser();
+      await AuthController.fetchUser();
     } catch (e) {
       alert('Ошибка при получении данных пользователя", e');
     }
@@ -106,6 +106,7 @@ export class ChatPage extends Block {
       id: 'title',
       name: 'title',
       placeholder: 'Новый_чат',
+      value: '',
       className: 'chat__message',
     });
     this.children.buttonCreateChat = new Button({
@@ -163,6 +164,7 @@ export class ChatPage extends Block {
       id: 'search',
       name: 'search',
       placeholder: 'Поиск',
+      value: '',
       className: 'chat__search',
     });
     this.children.chatHeader = new ChatHeader({

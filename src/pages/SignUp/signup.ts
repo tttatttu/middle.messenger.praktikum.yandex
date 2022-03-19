@@ -1,19 +1,14 @@
 import Block from '../../utils/Block';
-import { Button } from '../../components/Button/button';
+import {Button} from '../../components/Button/button';
 import template from './signup.hbs';
-import { Input } from '../../components/Input/input';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
-import { validateInputs } from '../../utils/Valid';
+import {Input} from '../../components/Input/input';
+import {PATTERN_VALIDATION} from '../../utils/CONST';
+import {validateInputs} from '../../utils/Valid';
 import AuthController, {ControllerSignUpData} from "../../controllers/AuthController";
-import {SignUpData} from "../../api/AuthApi";
 
 export class SignUpPage extends Block {
   constructor() {
-    super(
-        {
-
-    }
-    );
+    super({});
 
   }
 
@@ -57,6 +52,7 @@ export class SignUpPage extends Block {
       id: 'email',
       name: 'email',
       placeholder: 'Почта',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
@@ -68,6 +64,7 @@ export class SignUpPage extends Block {
       minlength: '3',
       maxlength: '20',
       placeholder: 'Логин',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
@@ -79,6 +76,7 @@ export class SignUpPage extends Block {
       minlength: '3',
       maxlength: '20',
       placeholder: 'Имя',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
@@ -90,6 +88,7 @@ export class SignUpPage extends Block {
       minlength: '3',
       maxlength: '20',
       placeholder: 'Фамилия',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
@@ -99,28 +98,31 @@ export class SignUpPage extends Block {
       id: 'phone',
       name: 'phone',
       placeholder: 'Телефон',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
     });
     this.children.inputPassword = new Input({
-      type: 'text',
+      type: 'password',
       id: 'password',
       name: 'password',
       minlength: '8',
       maxlength: '40',
       placeholder: 'Пароль',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
     });
     this.children.inputPasswordAgain = new Input({
-      type: 'text',
+      type: 'password',
       id: 'password_again',
       name: 'password_again',
       minlength: '8',
       maxlength: '40',
       placeholder: 'Пароль (еще раз)',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),

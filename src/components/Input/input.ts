@@ -21,10 +21,10 @@ interface InputProps {
 
 export class Input extends Block {
   constructor(props: InputProps) {
-    super(props);
+    super({...props});
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, { ...this.props});
   }
 }

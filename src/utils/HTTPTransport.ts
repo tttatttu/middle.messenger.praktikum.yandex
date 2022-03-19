@@ -37,6 +37,13 @@ export default class HTTPTransport {
     })
   }
 
+  public update<Response = void>(path: string, data?: unknown):Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.PUT,
+      data
+    })
+  }
+
   public patch<Response = void>(path: string, data?: unknown):Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.PATCH,

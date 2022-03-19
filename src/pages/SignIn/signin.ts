@@ -1,10 +1,10 @@
 import Block from '../../utils/Block';
-import { Button } from '../../components/Button/button';
+import {Button} from '../../components/Button/button';
 import template from './signin.hbs';
-import { Input } from '../../components/Input/input';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
-import { validateInputs } from '../../utils/Valid';
-import AuthController, {ControllerSignUpData} from "../../controllers/AuthController";
+import {Input} from '../../components/Input/input';
+import {PATTERN_VALIDATION} from '../../utils/CONST';
+import {validateInputs} from '../../utils/Valid';
+import AuthController from "../../controllers/AuthController";
 import {SignInData} from "../../api/AuthApi";
 
 export class SignInPage extends Block {
@@ -19,11 +19,11 @@ export class SignInPage extends Block {
         { elementId: 'login', regexp: PATTERN_VALIDATION.login },
         { elementId: 'password', regexp: PATTERN_VALIDATION.password },
     );
-    console.log('1', data)
+
     if (data) {
       try {
         await AuthController.signIn(data as SignInData).then(() => console.log("Авторизация прошла успешно"))
-
+        AuthController.fetchUser()
       } catch (e) {
         console.log(e)
         // alert(e.reason)
@@ -51,17 +51,19 @@ export class SignInPage extends Block {
       minlength: '3',
       maxlength: '20',
       placeholder: 'Логин',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
     });
     this.children.inputPassword = new Input({
-      type: 'text',
+      type: 'password',
       id: 'password',
       name: 'password',
       minlength: '8',
       maxlength: '40',
       placeholder: 'Пароль',
+      value: '',
       required: true,
       className: 'form__input',
       events: this.inputValidation(),
