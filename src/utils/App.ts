@@ -1,4 +1,3 @@
-// import {loginPage} from '../pages/';
 import {SignUpPage} from '../pages/SignUp/signup';
 // import {errorPage} from '../pages/errors/error';
 import {SignInPage} from "../pages/SignIn/signin";
@@ -7,11 +6,9 @@ import {PasswordEditPage} from "../pages/PasswordEdit/PasswordEdit";
 import ProfilePage from "../pages/Profile/index";
 import ChatPage from "../pages/Chat/index";
 import ProfileEditPage from "../pages/ProfileEdit/index";
-// import {chatPage} from '../pages/Chat/chat/id';
+import AuthController from "../controllers/AuthController";
 
-export const init = () => {
-
-
+export const init = async () => {
     const router = new Router();
 
     router
@@ -23,25 +20,11 @@ export const init = () => {
         .use('/messages', ChatPage)
         .use('/', SignInPage)
 
-    // router.go('/profile')
-
-    // router.go('/messenger')
-    // ChatController.getChats()
-
-
-    // AuthController.fetchUser().then(() => { router.go('/messages')})
-    //     .catch ((e) => {
-    // console.log("Ошибка при получении данных пользователя", e)
-    // router.go('/signin')})
-
-
-    // ChatController.getChats()
-    // // ChatController.createChat('z')
-    // .then(() => {
-    //  router.go('/messages');
-    // })
-    // .catch(() => router.go('/signin'));
+    try {
+        await AuthController.fetchUser();
+    } catch (e) {
+        router.go('/signin');
+    }
 
     router.start()
-
 };

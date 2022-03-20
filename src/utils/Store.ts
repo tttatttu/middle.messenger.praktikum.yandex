@@ -37,6 +37,8 @@ interface StoreData {
     currentUser?: UserData;
     currentChatId?: number;
     chatToTitle?: string;
+    currentChat?: UserData[]
+    messages?: any
 }
 
 class Store extends EventBus{
@@ -80,3 +82,6 @@ export default store
 
 export const withUser = withStore((state) => ({...state.currentUser}))
 export const withChats = withStore((state) => ({chatList: state.chatList}))
+export const withCurrentChat = withStore((state) => ({...state.currentChat}))
+export const withMessages = withStore((state) => ({messages: state.messages}))
+

@@ -1,5 +1,6 @@
 <header class='header'>
-  <img class='header__avatar' src={{href}} alt={{alt}} />
-  <h2 class='header__name'>{{name}}</h2>
-  <button type='button' class='header__menu chat__menu_dots'>&#8942;</button>
+  <img class='header__avatar' src={{#if avatar}}{{avatar}}{{else}}'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'{{/if}} alt='avatar' />
+  <h2 class='header__name'>{{title}}</h2>
+    {{{buttonDeletChat}}}
+    {{{buttonLogout}}}
 </header>

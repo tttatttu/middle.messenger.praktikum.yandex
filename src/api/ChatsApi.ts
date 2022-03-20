@@ -2,7 +2,8 @@ import BaseAPI from "./BaseAPI";
 
 
 export interface ChatData {
-    title?: string
+    id?: string,
+    title?: string,
     chatId?: number,
     userId?: number
 }
@@ -32,6 +33,14 @@ export default class ChatsApi extends BaseAPI {
 
     getChatUsers(data: ChatData): Promise<unknown> {
         return this.http.get(`/${data}/users`);
+    }
+
+    deleteChat(chatId: ChatData): Promise<unknown> {
+        return this.http.delete('', {chatId} );
+    }
+
+    getToken(id: ChatData): Promise<unknown> {
+        return this.http.post(`/token/${id}`);
     }
 
     // create = undefined

@@ -10,17 +10,17 @@ class ChatController {
     }
     async getChats() {
         const response = await this.api.read()
-        console.log(response)
+        // console.log(response)
         store.set('chatList', response)
     }
 
     async createChat(data) {
         const response = await this.api.create(data)
-        console.log(response)
+        // console.log(response)
         store.set('chatToTitle', response)
     }
     async addUserToChat(chatId, userId) {
-        return this.api.addUserToChat(chatId, userId);
+        return await this.api.addUserToChat(chatId, userId);
     }
 
    deleteUserFromChat(chatId, userId) {
@@ -28,7 +28,16 @@ class ChatController {
     }
 
     async getChatUsers(data) {
-        return this.api.getChatUsers(data);
+        return await this.api.getChatUsers(data);
+    }
+
+    async deleteChat(chatId) {
+        await this.api.deleteChat(chatId);
+    }
+
+    async getToken(id) {
+       const res = await this.api.getToken(id);
+       console.log(res)
     }
 }
 

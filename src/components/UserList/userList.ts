@@ -27,7 +27,6 @@ export class UserList extends Block {
         click: (e: PointerEvent) => this.addUser(e),
       },
     });
-    console.log(props)
   }
 
   async addUser(e) {
@@ -37,8 +36,11 @@ export class UserList extends Block {
     if (id) {
       store.set('currentChatId', id);
       const chatUsers = await ChatController.getChatUsers(id);
+      const currentChat = this.props.chatList.filter((el) => el.id===id)
+      store.set('currentChat', currentChat[0]);
       console.log('Пользователи чата: ', chatUsers);
     }
+
   }
 
   render() {

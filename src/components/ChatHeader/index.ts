@@ -1,1 +1,4 @@
-export { ChatHeader as default } from './chatHeader';
+import {withCurrentChat} from "../../utils/Store";
+import {ChatHeader} from './chatHeader';
+
+export default withCurrentChat(ChatHeader)

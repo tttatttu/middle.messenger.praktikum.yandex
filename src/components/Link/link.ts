@@ -12,21 +12,19 @@ interface LinkProps extends WithRouterProps {
 }
 
 export class Link extends Block {
-    // constructor({href, router}: LinkProps) {
-    //     super({
-    //         href,
-    //         events: {
-    //             click: (e: MouseEvent) => {
-    //                 e.preventDefault()
-    //
-    //                 router.go(href)
-    //             }
-    //         }
-    //     })
-    // }
+    constructor({href, router, text, className}: LinkProps) {
+        super({
+            href,
+            events: {
+                click: (e: MouseEvent) => {
+                    e.preventDefault()
 
-    constructor(props: LinkProps) {
-      super(props);
+                    router.go(href)
+                }
+            },
+            text,
+            className
+        })
     }
 
     render() {

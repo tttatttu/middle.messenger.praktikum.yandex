@@ -50,8 +50,8 @@ class Route {
             return;
         }
 
-        this._block.show();
-        // render(this._props.rootQuery, this._block);
+        // this._block.show();
+        render(this._props.rootQuery, this._block);
     }
 }
 

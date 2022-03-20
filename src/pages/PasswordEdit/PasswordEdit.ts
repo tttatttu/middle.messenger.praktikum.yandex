@@ -6,7 +6,6 @@ import {Button} from '../../components/Button/button';
 import {validateInputs} from '../../utils/Valid';
 import UsersController from "../../controllers/UsersController";
 import {UpdatePasswordData} from "../../api/UsersApi";
-import AuthController from "../../controllers/AuthController";
 import Router from "../../utils/Router";
 
 
@@ -25,7 +24,6 @@ export class PasswordEditPage extends Block {
         if (data) {
             try {
                 await UsersController.updatePassword(data as UpdatePasswordData).then(() => console.log("Пароль изменен"))
-                AuthController.fetchUser()
             } catch (e) {
                 console.log(e)
             }

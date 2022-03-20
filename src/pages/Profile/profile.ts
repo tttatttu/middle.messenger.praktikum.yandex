@@ -4,6 +4,7 @@ import {Profile} from '../../components/Profile/profile';
 import {Button} from "../../components/Button/button";
 import AuthController from "../../controllers/AuthController";
 import Router from "../../utils/Router";
+import Link from "../../components/Link/index";
 
 const titleList = {
   'email': 'Почта',
@@ -19,24 +20,22 @@ export class ProfilePage extends Block {
 
   constructor(props) {
     profile = Object.entries(props).map((el) => ({title: titleList[el[0]], text: el[1]})).filter(({title}) => title !== 'id' && title !== 'avatar' && title)
-    super({...props, getChats: () => this.getChats()});
-
+    super({...props});
   }
-
-  componentDidMount() {
-    AuthController.fetchUser()
-    console.log('componentDidMount')
-  }
-
-  // async getChats() {
-  //   try {
-  //     await ChatController.getChats();
-  //   } catch (error) {
-  //     alert(`Ошибка в запросе чатов! ${error ? error.reason : ''}`);
-  //   }
-  // }
 
   protected initChildren() {
+    this.children.editProfile = new Link({
+      href: '/editprofile',
+      text: 'Редактировать профиль',
+      className: 'profile__link',
+      router: new Router()
+    })
+    this.children.editPassword = new Link({
+      href: '/password',
+      text: 'Изменить пароль',
+      className: 'profile__link',
+      router: new Router()
+    })
     this.children.buttonLogout = new Button({
       text: 'Выйти',
       type: 'button',
@@ -58,13 +57,10 @@ export class ProfilePage extends Block {
         },
       },
     });
-    // this.children.profile = new Profile({profiles: [...profile]});
     this.children.profile = new Profile({profiles: [...profile]});
   }
 
   render() {
-    // console.log("Props>>>>>>>>",this.props)
-    // console.log("Props>>>>>>>>", store)
     return this.compile(template, {...this.props});
   }
 }
