@@ -14,8 +14,6 @@ export const validateInput = (elementId: string, regexp: RegExp | string): Input
   const error = document.getElementById(`${elementId}-error`) as HTMLInputElement;
   const reg = new RegExp(regexp);
   const validationOK = reg.test(input?.value);
-  // console.log(input?.id)
-  // console.log(error.classList)
 
   if (input?.id !== 'message') {
     if (validationOK) {

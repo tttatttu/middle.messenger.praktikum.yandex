@@ -14,7 +14,7 @@ import Message from "../../components/Message/index";
 
 export class ChatPage extends Block {
 
-    constructor(props) {
+    constructor(props: Record<string, unknown> | undefined) {
 
         super({...props,});
         this.onGetChat()
@@ -35,7 +35,7 @@ export class ChatPage extends Block {
         console.log(store)
     }
 
-    updatePage(message) {
+    updatePage(message: { message?: string; }) {
         const host = 'ya-praktikum.tech';
         const userId = store?.getState().currentUser?.id
         const chatId = store?.getState().currentChatId
@@ -103,7 +103,7 @@ export class ChatPage extends Block {
     }
 
 
-    parseMessage(arr, userId) {
+    parseMessage(arr: { time: string; content: string; user_id: string; }[], userId: any) {
         return arr.map(({time, content, user_id}) => {
             const date = time.replace(/\S+[T]/, '').replace(/[:]\d{2}[+]\S+/, '');
             return {
@@ -129,8 +129,9 @@ export class ChatPage extends Block {
             type: 'submit',
             className: 'chat__btn',
             events: {
-                click: (e) => {
+                click: (e: { preventDefault: () => void; }) => {
                     e.preventDefault();
+                    // @ts-ignore
                     const title = document.getElementById('title').value
 
                     ChatController.createChat({title})
