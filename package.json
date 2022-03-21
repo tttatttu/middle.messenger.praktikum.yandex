@@ -65,6 +65,7 @@
         "parcel-plugin-handlebars-precompile": "^1.0.2",
         "postcss-modules": "^4.3.0",
         "prettier": "^2.5.1",
-        "serve": "^13.0.2"
+        "serve": "^13.0.2",
+        "xmlhttprequest": "^1.8.0"
     }
 }
