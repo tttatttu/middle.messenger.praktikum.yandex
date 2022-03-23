@@ -1,11 +1,9 @@
 import BaseAPI from "./BaseAPI";
 import {SignUpData} from "./AuthApi";
 
-
 export interface UsersData {
     id: number
 }
-
 
 export interface UpdatePasswordData {
     oldPassword: string;
@@ -19,7 +17,7 @@ export default class UsersApi extends BaseAPI {
         super('/user');
     }
 
-    create(data: UsersData): Promise<unknown> {
+    create(data: UsersData): Promise<string> {
         return this.http.post('', data)
     }
 
@@ -27,16 +25,14 @@ export default class UsersApi extends BaseAPI {
     //     return this.http.get('/', data)
     // }
 
-    updateProfile(data: SignUpData): Promise<unknown> {
+    updateProfile(data: SignUpData): Promise<string> {
         return this.http.put('/profile', data)
     }
 
-    updatePassword(data: UpdatePasswordData): Promise<unknown> {
+    updatePassword(data: UpdatePasswordData): Promise<string> {
         return this.http.put('/password', data)
     }
 
-
-    // create = undefined
     read = undefined
     update = undefined
     delete = undefined

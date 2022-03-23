@@ -15,11 +15,11 @@ export default class ChatsApi extends BaseAPI {
         super('/chats');
     }
 
-    create(data: ChatData): Promise<unknown> {
+    create(data: ChatData): Promise<string> {
         return this.http.post('', data)
     }
 
-    read(): Promise<unknown> {
+    read(): Promise<string> {
         return this.http.get('')
     }
 
@@ -31,20 +31,18 @@ export default class ChatsApi extends BaseAPI {
         return this.http.delete(`/users`, { users: [userId], chatId })
     }
 
-    getChatUsers(data: ChatData): Promise<unknown> {
+    getChatUsers(data: ChatData): Promise<string> {
         return this.http.get(`/${data}/users`);
     }
 
-    deleteChat(chatId: ChatData): Promise<unknown> {
+    deleteChat(chatId: ChatData): Promise<string> {
         return this.http.delete('', {chatId} );
     }
 
-    getToken(id: ChatData): Promise<unknown> {
+    getToken(id: ChatData): Promise<string> {
         return this.http.post(`/token/${id}`);
     }
 
-    // create = undefined
-    // read = undefined
     update = undefined
     delete = undefined
 }

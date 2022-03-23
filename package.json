@@ -52,20 +52,20 @@
         "postcss-initial": "^3.0.4",
         "postcss-loader": "^6.2.1",
         "postcss-mixins": "^9.0.1",
+        "postcss-modules": "^4.3.0",
         "postcss-nested": "^5.0.6",
         "postcss-simple-vars": "6.0.3",
         "stylelint": "14.5.0",
         "ts-node": "10.5.0",
-        "typescript": "4.5.5"
+        "typescript": "4.5.5",
+        "prettier": "^2.5.1",
+        "xmlhttprequest": "^1.8.0"
     },
     "dependencies": {
         "cssnano": "^5.0.17",
         "nanoid": "^3.3.1",
         "parcel-plugin-handlebars": "^0.4.4",
         "parcel-plugin-handlebars-precompile": "^1.0.2",
-        "postcss-modules": "^4.3.0",
-        "prettier": "^2.5.1",
-        "serve": "^13.0.2",
-        "xmlhttprequest": "^1.8.0"
+        "serve": "^13.0.2"
     }
 }
