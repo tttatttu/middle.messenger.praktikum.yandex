@@ -12,10 +12,10 @@ interface ProfilesProps {
 
 export class Profile extends Block {
   constructor(props: ProfilesProps) {
-    super(props);
+    super({...props});
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template,  {...this.props} );
   }
 }

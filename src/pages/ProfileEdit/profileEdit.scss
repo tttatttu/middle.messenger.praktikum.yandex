@@ -5,6 +5,8 @@
   height: 100vh;
 
   &__button {
+    border: 1px solid black;
+    border-radius: unset;
   }
 
   &__body {

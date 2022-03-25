@@ -5,6 +5,7 @@
   minlength={{minlength}}
   maxlength={{maxlength}}
   required
+  value={{#if value}}{{value}}{{else}}''{{/if}}
   placeholder={{placeholder}}
   class='input {{className}}'
 />

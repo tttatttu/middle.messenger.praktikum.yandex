@@ -1,44 +1,66 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
-import { Profile } from '../../components/Profile/profile';
+import {Profile} from '../../components/Profile/profile';
+import {Button} from "../../components/Button/button";
+import AuthController from "../../controllers/AuthController";
+import Router from "../../utils/Router";
+import Link from "../../components/Link/index";
 
-const profiles = [
-  {
-    title: 'Почта',
-    text: 'email',
-  },
-  {
-    title: 'Логин',
-    text: 'login',
-  },
-  {
-    title: 'Имя',
-    text: 'first_name',
-  },
-  {
-    title: 'Фамилия',
-    text: 'second_name',
-  },
-  {
-    title: 'Имя в чате',
-    text: 'display_name',
-  },
-  {
-    title: 'Телефон',
-    text: 'phone',
-  },
-];
+const titleList = {
+  'email': 'Почта',
+  'login': 'Логин',
+  'first_name': 'Имя',
+  'second_name': 'Фамилия',
+  'display_name': 'Имя в чате',
+  'phone': 'Телефон'
+}
 
+let profile
 export class ProfilePage extends Block {
-  constructor() {
-    super();
+
+  constructor(props) {
+    profile = Object.entries(props).map((el) => ({title: titleList[el[0]], text: el[1]})).filter(({title}) => title !== 'id' && title !== 'avatar' && title)
+    super({...props});
   }
 
   protected initChildren() {
-    this.children.profile = new Profile({ profiles });
+    this.children.editProfile = new Link({
+      href: '/editprofile',
+      text: 'Редактировать профиль',
+      className: 'profile__link',
+      router: new Router()
+    })
+    this.children.editPassword = new Link({
+      href: '/password',
+      text: 'Изменить пароль',
+      className: 'profile__link',
+      router: new Router()
+    })
+    this.children.buttonLogout = new Button({
+      text: 'Выйти',
+      type: 'button',
+      className: 'popup__button button_blueviolet',
+      events: {
+        click: () => {
+          AuthController.logout()}
+      }
+    })
+    this.children.buttonBack = new Button({
+      text: '<<',
+      type: 'button',
+      className: 'profile__button',
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          const router = new Router()
+          router.go('/messages')
+        },
+      },
+    });
+    this.children.profile = new Profile({profiles: [...profile]});
   }
 
   render() {
-    return this.compile(template, {});
+    return this.compile(template, {...this.props});
   }
 }

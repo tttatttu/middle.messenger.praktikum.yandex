@@ -1,28 +1,22 @@
 <ul class='users'>
-  {{#each users}}
-    <a href='' class='users__link'>
-      <li class='user'>
-        <img class='user__img' src={{href}} alt={{alt}} />
-        <div class='user__info'>
-          <h2 class='user__title'>{{name}}</h2>
-          <!--                    //добавить признак чье сообщение-->
-          {{#if name}}
-            <span class='user__text'>{{text}}</span>
-          {{else}}
-            <span class='user__text'><h3 class='user__subtitle'>Ты: </h3>{{text}}</span>
-          {{/if}}
-        </div>
-        <div class='user__helper'>
-          <button type='button' class='user__button'>x</button>
-          <span class='user__time'>{{time}}</span>
-        </div>
-        {{button}}
-        {{#if unread}}
-          <div class='user__count'>
-            {{unread}}
-          </div>
-        {{/if}}
-      </li>
-    </a>
-  {{/each}}
+    {{#each chatList}}
+        <li class='user' data-id={{id}}>
+            <img class='user__img' src={{#if avatar}}{{avatar}}{{else}}
+            'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'{{/if}} alt='avatar' />
+            <div class='user__info'>
+                <h2 class='user__title'>{{title}}</h2>
+                <span class='user__text'>{{last_message.content}}</span>
+            </div>
+            <div class='user__helper'>
+                <button type='button' class='user__button'>x</button>
+                <span class='user__time'>{{time}}</span>
+            </div>
+            {{button}}
+            {{#if unread}}
+                <div class='user__count'>
+                    {{unread_count}}
+                </div>
+            {{/if}}
+        </li>
+    {{/each}}
 </ul>

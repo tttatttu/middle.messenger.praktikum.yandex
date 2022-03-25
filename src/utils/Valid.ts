@@ -13,22 +13,22 @@ export const validateInput = (elementId: string, regexp: RegExp | string): Input
   const input = document.getElementById(elementId) as HTMLInputElement;
   const error = document.getElementById(`${elementId}-error`) as HTMLInputElement;
   const reg = new RegExp(regexp);
-  const validationOK = reg.test(input.value);
+  const validationOK = reg.test(input?.value);
 
-  if (input.id !== 'message') {
-    if (!validationOK) {
-      error.classList.add('form__error_active');
-      error.classList.remove('form__error_normal');
+  if (input?.id !== 'message') {
+    if (validationOK) {
+      error?.classList.remove('form__error_active');
+      error?.classList.add('form__error_normal');
     } else {
-      error.classList.add('form__error_normal');
-      error.classList.remove('form__error_active');
+      error?.classList.add('form__error_active');
+      error?.classList.remove('form__error_normal');
     }
   }
 
   return {
     validationOK,
-    inputName: input.name,
-    inputValue: input.value,
+    inputName: input?.name,
+    inputValue: input?.value,
   };
 };
 
@@ -36,7 +36,9 @@ export const validateInputs = (...items: ValidationInput[]) => {
   const inputsValidationResults = items.map((item) => validateInput(item.elementId, item.regexp));
 
   if (inputsValidationResults.every((item) => item.validationOK)) {
-    inputsValidationResults.reduce((acc, cur) => Object.assign(acc, { [cur.inputName]: cur.inputValue }), {});
+
+    const res = inputsValidationResults.reduce((acc, cur) => Object.assign(acc, { [cur.inputName]: cur.inputValue }), {});
+
+    return res
   }
-  console.log(inputsValidationResults);
 };

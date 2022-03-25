@@ -1,6 +1,6 @@
-import { EventBus } from './EventBus';
+import {EventBus} from './EventBus';
 // @ts-ignore
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 
 class Block {
   static EVENTS = {
@@ -13,21 +13,18 @@ class Block {
   public id = nanoid(6);
 
   private _element: HTMLElement | null = null;
-  private _meta: { props: any };
 
   protected props: any;
   protected children: Record<string, Block>;
 
   private eventBus: () => EventBus;
 
-  constructor(propsAndChildren: any = {}) {
+  constructor(propsAndChildren: Record<string, unknown> = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this.getChildren(propsAndChildren);
 
     this.children = children;
-
-    this._meta = { props };
 
     this.props = this._makePropsProxy(props);
 
@@ -38,9 +35,9 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  getChildren(propsAndChildren: any) {
-    const children = {};
-    const props = {};
+  getChildren(propsAndChildren: Record<string, unknown>) {
+    const children: Record<string, Block> = {};
+    const props: Record<string, unknown> = {};
 
     Object.entries(propsAndChildren).map(([key, value]) => {
       if (value instanceof Block) {
@@ -57,7 +54,7 @@ class Block {
 
   protected initChildren() {}
 
-  private _registerEvents(eventBus) {
+  private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -79,7 +76,7 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(oldProps, newProps) {
+  private _componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
     // const response = this.componentDidUpdate(oldProps, newProps);
     this._render();
     if (this.componentDidUpdate(oldProps, newProps)) {
@@ -91,7 +88,7 @@ class Block {
     return true;
   }
 
-  setProps = (nextProps) => {
+  setProps = (nextProps: Record<string, unknown>) => {
     if (!nextProps) {
       return;
     }
@@ -111,7 +108,6 @@ class Block {
     if (this._element) {
       this._removeEvents();
       this._element.replaceWith(newElement);
-      console.log('3', this._element);
     }
 
     this._element = newElement;
@@ -128,9 +124,7 @@ class Block {
     return this._element;
   }
 
-  private _makePropsProxy(props) {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
+  private _makePropsProxy(props: Record<string, unknown>) {
     const self = this;
 
     return new Proxy(props, {
@@ -141,8 +135,6 @@ class Block {
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
@@ -166,7 +158,6 @@ class Block {
 
   private _addEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
-
     if (!events) {
       return;
     }
@@ -177,7 +168,6 @@ class Block {
   }
 
   private _createDocumentElement(tagName: string): HTMLElement {
-    // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
     return document.createElement(tagName);
   }
 

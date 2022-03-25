@@ -1,55 +1,59 @@
 <div class='profile'>
-  <button type='button' class='profile__button'>&#8678;</button>
-  <div class='profile__body' id='form_profile'>
-    <img
-      class='profile__avatar'
-      src='https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'
-      alt='avatar'
-    />
-    <form class='form form__size_medium' name='profileEdit' novalidate>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите почту</h2>
-          {{{inputEmail}}}
-        </div>
-        <span id='email-error' class='form__error form__error_warning'>Введи адрес электронной почты</span>
-      </div>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите логин</h2>
-          {{{inputLogin}}}
-        </div>
-        <span id='login-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
-      </div>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите имя</h2>
-          {{{inputName}}}
-        </div>
-        <span id='name-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
-      </div>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите фамилию</h2>
-          {{{inputSurName}}}
-        </div>
-        <span id='surname-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
-      </div>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите никнейм</h2>
-          {{{inputDisplayName}}}
-        </div>
-        <span id='display_name-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
-      </div>
-      <div class='form__field'>
-        <div class='form__content'>
-          <h2 class='form__title'>Введите телефон</h2>
-          {{{inputPhone}}}
-        </div>
-        <span id='phone-error' class='form__error form__error_warning'>Введите номер телефона</span>
-      </div>
-      {{{button}}}
-    </form>
-  </div>
+    {{{buttonBack}}}
+    <div class='profile__body' id='form_profile'>
+        <img
+                class='profile__avatar'
+                src='https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'
+                alt='avatar'
+        />
+        <form class='form form__size_medium' name='profileEdit' novalidate>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Почта</h2>
+                    {{{inputEmail}}}
+                </div>
+                <span id='email-profile-error'
+                      class='form__error form__error_warning'>Введи адрес электронной почты</span>
+            </div>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Логин</h2>
+                    {{{inputLogin}}}
+                </div>
+                <span id='login-profile-error'
+                      class='form__error form__error_warning'>Проверьте формат данных в поле</span>
+            </div>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Имя</h2>
+                    {{{inputName}}}
+                </div>
+                <span id='first_name-profile-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
+            </div>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Фамилию</h2>
+                    {{{inputSurName}}}
+                </div>
+                <span id='second_name-profile-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
+            </div>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Никнейм</h2>
+                    {{{inputDisplayName}}}
+                </div>
+                <span id='display_name-profile-error' class='form__error form__error_warning'>Проверьте формат данных в поле</span>
+            </div>
+            <div class='form__field'>
+                <div class='form__content'>
+                    <h2 class='form__title'>Телефон</h2>
+                    {{{inputPhone}}}
+                </div>
+                <span id='phone-profile-error' class='form__error form__error_warning'>Введите номер телефона</span>
+            </div>
+            <div class='profile__footer'>
+            </div>
+            {{{button}}}
+        </form>
+    </div>
 </div>

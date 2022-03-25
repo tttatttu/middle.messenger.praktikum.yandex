@@ -2,19 +2,18 @@
 @import url(../../static/fonts/fonts.css);
 @import url(../components/Button/button.scss);
 @import url(../components/Error/errors.scss);
-@import url(../pages/Authorization/authorization.scss);
+@import url(../pages/SignIn/signin.scss);
 @import url(../pages/Chat/chat.scss);
 @import url(../pages/Profile/profile.scss);
 @import url(../pages/ProfileEdit/profileEdit.scss);
 @import url(../pages/PasswordEdit/passwordEdit.scss);
-@import url(../pages/Registration/registration.scss);
+@import url(../pages/SignUp/signup.scss);
 @import url(../components/Input/input.scss);
 @import url(../components/Link/link.scss);
 @import url(../components/ChatHeader/chatHeader.scss);
 @import url(../components/Message/message.scss);
 @import url(../components/UserList/userList.scss);
 @import url(../components/Profile/profile.scss);
-@import url(../components/ProfileEdit/profile.scss);
 
 html,
 body {
