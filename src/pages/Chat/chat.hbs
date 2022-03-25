@@ -3,26 +3,24 @@
     {{{link}}}
     {{{inputSearch}}}
     <div class='chat__users'>
-        <div class='chat__new'>
-            {{{inputCreateChat}}}
-            {{{buttonCreateChat}}}
-        </div>
-        <div class='chat__new'>
-            {{{buttonAddUserToChat}}}
+      <div class='chat__new'>
+        {{{inputCreateChat}}}
+        {{{buttonCreateChat}}}
+      </div>
+      <div class='chat__new'>
+        {{{buttonAddUserToChat}}}
 
-            {{{buttonDeleteUserFromChat}}}
-        </div>
+        {{{buttonDeleteUserFromChat}}}
+      </div>
       {{{user}}}
     </div>
   </div>
   <div class='chat__feed'>
     {{{chatHeader}}}
     <div class='chat__body'>
-        {{{messages}}}
+      {{{messages}}}
       <!--            // добавить признак выбранного чата-->
-      {{#if messages}}
-
-      {{else}}
+      {{#if messages}}{{else}}
         <h3 class='chat__warning'>
           Выберите чат, чтобы отправить сообщение
         </h3>

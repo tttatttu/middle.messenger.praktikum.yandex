@@ -1,37 +1,34 @@
-import store from '../utils/Store'
-import UsersApi, {UpdatePasswordData} from "../api/UsersApi";
-import {SignUpData} from "../api/AuthApi";
-import Router from "../utils/Router";
-
+import store from '../utils/Store';
+import UsersApi, { UpdatePasswordData } from '../api/UsersApi';
+import { SignUpData } from '../api/AuthApi';
+import Router from '../utils/Router';
 
 class UsersController {
-    private api: UsersApi
+  private api: UsersApi;
 
-    constructor() {
-        this.api = new UsersApi()
-    }
+  constructor() {
+    this.api = new UsersApi();
+  }
 
+  async createChat(data: string) {
+    const response = await this.api.create(data);
+    store.set('chatToTitle', response);
+  }
 
-    async createChat(data: string) {
-        const response = await this.api.create(data)
-        store.set('chatToTitle', response)
-    }
+  async updateProfile(data: SignUpData) {
+    await this.api.updateProfile(data);
 
-    async updateProfile(data: SignUpData) {
-        await this.api.updateProfile(data);
+    const router = new Router();
+    router.go('/profile');
+  }
 
-        const router = new Router()
-        router.go('/profile')
-    }
+  async updatePassword(data: UpdatePasswordData) {
+    const { newPassword_again, ...UpdatePasswordData } = data;
+    await this.api.updatePassword(UpdatePasswordData);
 
-    async updatePassword(data: UpdatePasswordData) {
-        const {newPassword_again, ...UpdatePasswordData} = data
-        await this.api.updatePassword(UpdatePasswordData)
-
-        const router = new Router()
-        router.go('/profile')
-    }
-
+    const router = new Router();
+    router.go('/profile');
+  }
 }
 
 export default new UsersController();

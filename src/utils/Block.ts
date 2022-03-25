@@ -1,6 +1,6 @@
-import {EventBus} from './EventBus';
+import { EventBus } from './EventBus';
 // @ts-ignore
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 
 class Block {
   static EVENTS = {
@@ -86,7 +86,7 @@ class Block {
   }
 
   componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
-    console.log(oldProps, newProps)
+    console.log(oldProps, newProps);
     return true;
   }
 

@@ -18,7 +18,7 @@ module.exports = {
     compress: true,
     port: 8080,
     open: true,
-    // historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -52,7 +52,8 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader'
-      }
+      },
+      { test: /\.handlebars$/, loader: "handlebars-loader" }
     ]
   },
   plugins: [

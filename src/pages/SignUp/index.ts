@@ -1,4 +1,4 @@
-import {SignUpPage} from './signup';
-import {withUser} from "../../utils/Store";
+import { SignUpPage } from './signup';
+import { withUser } from '../../utils/Store';
 
-export default withUser(SignUpPage)
+export default withUser(SignUpPage);

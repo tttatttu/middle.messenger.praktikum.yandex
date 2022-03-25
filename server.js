@@ -10,3 +10,6 @@ app.listen(PORT, function () {
 });
 
 app.use(express.static(staticPath));
+app.use('*', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});

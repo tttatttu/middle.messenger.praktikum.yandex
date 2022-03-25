@@ -1,8 +1,8 @@
 import Block from '../../utils/Block';
 import template from './userList.hbs';
-import ChatController from "../../controllers/ChatController";
-import store from "../../utils/Store";
-import {getParentDataSetParam} from "../../utils/helpers";
+import ChatController from '../../controllers/ChatController';
+import store from '../../utils/Store';
+import { getParentDataSetParam } from '../../utils/helpers';
 
 interface UserListProps {
   avatar: string;
@@ -23,25 +23,24 @@ export class UserList extends Block {
   constructor(props: UsersListProps) {
     super({
       ...props,
-      events: {click: (e: PointerEvent) => this.addUser(e),},
+      events: { click: (e: PointerEvent) => this.addUser(e) },
     });
   }
 
   async addUser(e: any) {
-    e.preventDefault()
+    e.preventDefault();
 
     const id = Number(getParentDataSetParam(e.target as HTMLElement, 'user', 'id'));
     if (id) {
       store.set('currentChatId', id);
       const chatUsers = await ChatController.getChatUsers(id);
-      const currentChat = this.props.chatList.filter((el: any) => el.id===id)
+      const currentChat = this.props.chatList.filter((el: any) => el.id === id);
       store.set('currentChat', currentChat[0]);
       console.log('Пользователи чата: ', chatUsers);
     }
-
   }
 
   render() {
-    return this.compile(template, { ...this.props});
+    return this.compile(template, { ...this.props });
   }
 }

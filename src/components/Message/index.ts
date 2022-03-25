@@ -1,5 +1,5 @@
-import {Message} from './message';
-import {withMessages} from "../../utils/Store";
+import { Message } from './message';
+import { withMessages } from '../../utils/Store';
 
 // @ts-ignore
-export default withMessages(Message)
+export default withMessages(Message);
