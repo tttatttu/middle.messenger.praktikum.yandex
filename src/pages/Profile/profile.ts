@@ -60,8 +60,7 @@ export class ProfilePage extends Block {
         },
       },
     });
-    this.children.profile = new Profile({ profiles: [...profile] });
-    // this.children.profile = new Profile({});
+    this.children.profileComponent = new Profile({ profiles: [...profile] });
   }
 
   render() {
