@@ -1,11 +1,10 @@
-FROM node:14.15.4-alpine
+FROM node:16
 
 WORKDIR /app
 
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN npm build
 
-EXPOSE 80
+EXPOSE 8080
 CMD npm run start
