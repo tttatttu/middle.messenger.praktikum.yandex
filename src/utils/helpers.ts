@@ -31,9 +31,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
         throw new Error('path must be string');
     }
 
-    const result = path.split('.').reduceRight<Indexed>((acc, key) => ({
-        [key]: acc,
-    }), value as any);
+    const result = path.split('.').reduceRight<Indexed>((acc, key) => ({[key]: acc,}), value as any);
     return merge(object as Indexed, result);
 }
 
@@ -69,16 +67,6 @@ export function getParams(data:Indexed | [], parentKey?: string) {
 
     return result;
 }
-
-function queryString(data:Indexed) {
-    if (!isPlainObject(data)) {
-        throw new Error('input must be an object');
-    }
-
-    return getParams(data).map(arr => arr.join('=')).join('&');
-}
-// import {withStore} from "./Store";
-// export default withUser = withStore((state) => ({...state.currentUser}))
 
 export const getParentDataSetParam = (element: HTMLElement, className: string, dataSetParam: string): string | undefined => {
     let copyElement = element;

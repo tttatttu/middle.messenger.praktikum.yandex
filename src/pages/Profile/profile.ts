@@ -15,10 +15,11 @@ const titleList = {
   'phone': 'Телефон'
 }
 
-let profile
+let profile: { title: any; text: unknown; }[]
 export class ProfilePage extends Block {
 
-  constructor(props) {
+  constructor(props: any) {
+    // @ts-ignore
     profile = Object.entries(props).map((el) => ({title: titleList[el[0]], text: el[1]})).filter(({title}) => title !== 'id' && title !== 'avatar' && title)
     super({...props});
   }
@@ -50,7 +51,7 @@ export class ProfilePage extends Block {
       type: 'button',
       className: 'profile__button',
       events: {
-        click: (e) => {
+        click: (e: any) => {
           e.preventDefault();
           const router = new Router()
           router.go('/messages')

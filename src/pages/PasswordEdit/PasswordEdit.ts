@@ -36,7 +36,7 @@ export class PasswordEditPage extends Block {
             type: 'button',
             className: 'profile__button',
             events: {
-                click: (e) => {
+                click: (e: any) => {
                     e.preventDefault();
                     const router = new Router()
                     router.go('/profile')
@@ -48,7 +48,7 @@ export class PasswordEditPage extends Block {
             type: 'submit',
             className: 'profile__submit',
             events: {
-                click: (e) => {
+                click: (e: any) => {
                     e.preventDefault();
                     this.onUpdatePassword()
                 },
@@ -94,11 +94,13 @@ export class PasswordEditPage extends Block {
 
     inputValidation() {
         return {
-            focus: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            focus: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
-            blur: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            blur: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
         };
     }

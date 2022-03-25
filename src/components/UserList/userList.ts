@@ -23,20 +23,18 @@ export class UserList extends Block {
   constructor(props: UsersListProps) {
     super({
       ...props,
-      events: {
-        click: (e: PointerEvent) => this.addUser(e),
-      },
+      events: {click: (e: PointerEvent) => this.addUser(e),},
     });
   }
 
-  async addUser(e) {
+  async addUser(e: any) {
     e.preventDefault()
 
     const id = Number(getParentDataSetParam(e.target as HTMLElement, 'user', 'id'));
     if (id) {
       store.set('currentChatId', id);
       const chatUsers = await ChatController.getChatUsers(id);
-      const currentChat = this.props.chatList.filter((el) => el.id===id)
+      const currentChat = this.props.chatList.filter((el: any) => el.id===id)
       store.set('currentChat', currentChat[0]);
       console.log('Пользователи чата: ', chatUsers);
     }

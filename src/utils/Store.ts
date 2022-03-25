@@ -31,7 +31,6 @@ export interface ChatsData {
 
 }
 
-
 interface StoreData {
     chatList?: ChatsData;
     currentUser?: UserData;
@@ -48,7 +47,7 @@ class Store extends EventBus{
         return this.state;
     }
 
-    public set(path: keyof StoreData, value: unknown) {
+    public set(path: string, value: unknown) {
         set(this.state, path, value);
 
         this.emit(StoreEvents.Updated)
@@ -58,10 +57,10 @@ class Store extends EventBus{
 const store =  new Store();
 
 export const withStore = (mapStateToProps: (state: StoreData) => Record<string, unknown>) => (Component: typeof Block) => {
-    let state;
+    let state: any;
 
     return class extends Component {
-        constructor(props) {
+        constructor(props: any) {
             state = mapStateToProps(store.getState());
 
             super({ ...props, ...state });
@@ -80,8 +79,8 @@ export const withStore = (mapStateToProps: (state: StoreData) => Record<string, 
 
 export default store
 
-export const withUser = withStore((state) => ({...state.currentUser}))
-export const withChats = withStore((state) => ({chatList: state.chatList}))
-export const withCurrentChat = withStore((state) => ({...state.currentChat}))
-export const withMessages = withStore((state) => ({messages: state.messages}))
+export const withUser = withStore((state: StoreData) => ({...state.currentUser}))
+export const withChats = withStore((state: StoreData) => ({chatList: state.chatList}))
+export const withCurrentChat = withStore((state: StoreData) => ({...state.currentChat}))
+export const withMessages = withStore((state: StoreData) => ({messages: state.messages}))
 

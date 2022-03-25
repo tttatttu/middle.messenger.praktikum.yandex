@@ -17,19 +17,19 @@ class AuthController {
         if (data.password_again !== data.password) {
             store.set('currentUser.error', 'Пароли не совпадают')
 
-            return
+          return
         }
 
         const {password_again, ...signUpData} = data
         // store.set('currentUser.isLoading', true)
         const response = await this.api.signUp(signUpData)
         // store.set('currentUser.isLoading', false)
-
-        if (response.reason) {
-            store.set('currentUser.error', response.reason)
-
-            return
-        }
+        console.log(response)
+        // if (response.reason) {
+        //     store.set('currentUser.error', response.reason)
+        //
+        //     return
+        // }
 
         const router = new Router()
         router.go('/messages')

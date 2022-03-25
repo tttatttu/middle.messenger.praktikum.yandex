@@ -12,7 +12,8 @@ interface ChatHeaderProps {
 
 export class ChatHeader extends Block {
     constructor(props: ChatHeaderProps) {
-        super(props);
+        // @ts-ignore
+      super(props);
     }
 
     protected initChildren() {

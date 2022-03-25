@@ -17,7 +17,7 @@ export default class UsersApi extends BaseAPI {
         super('/user');
     }
 
-    create(data: UsersData): Promise<string> {
+    create(data: string): Promise<string> {
         return this.http.post('', data)
     }
 

@@ -12,7 +12,7 @@ class UsersController {
     }
 
 
-    async createChat(data) {
+    async createChat(data: string) {
         const response = await this.api.create(data)
         store.set('chatToTitle', response)
     }

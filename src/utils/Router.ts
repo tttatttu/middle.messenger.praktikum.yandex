@@ -1,10 +1,10 @@
 import Block from "./Block";
 
-export function isEqual(lhs, rhs) {
+export function isEqual(lhs: string, rhs: Record<string, unknown> | string) {
     return lhs === rhs;
 }
 
-function render(query, block) {
+function render(query: any, block: any) {
     const root = document.querySelector(query);
     root.innerHTML = ''
     root.append(block.getContent())
@@ -39,7 +39,7 @@ class Route {
         }
     }
 
-    match(pathname) {
+    match(pathname: string) {
         return isEqual(pathname, this._pathname);
     }
 
@@ -49,8 +49,6 @@ class Route {
             render(this._props.rootQuery, this._block);
             return;
         }
-
-        // this._block.show();
         render(this._props.rootQuery, this._block);
     }
 }
@@ -95,7 +93,6 @@ class Router {
         if (!route) {
             return;
         }
-        // console.log(route, this._currentRoute, 'routes');
         this._currentRoute?.leave();
 
         this._currentRoute = route;

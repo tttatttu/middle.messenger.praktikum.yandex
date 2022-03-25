@@ -1,7 +1,14 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-standard-scss",
   "rules": {
-    "color-hex-case": "lower"
+    "color-hex-case": "upper",
+    "string-quotes": "single",
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "scss/dollar-variable-pattern": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/at-mixin-pattern": null
   },
   "ignoreFiles": ["build/*"]
 }

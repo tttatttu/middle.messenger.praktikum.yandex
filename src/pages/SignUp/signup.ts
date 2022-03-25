@@ -45,7 +45,7 @@ export class SignUpPage extends Block {
             type: 'submit',
             className: 'popup__button button_blueviolet',
             events: {
-                click: (e) => {
+                click: (e: any) => {
                     e.preventDefault();
                     this.onSignUp()
                 },
@@ -135,11 +135,13 @@ export class SignUpPage extends Block {
 
     inputValidation() {
         return {
-            focus: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            focus: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
-            blur: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            blur: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
         };
     }

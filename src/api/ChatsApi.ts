@@ -23,23 +23,23 @@ export default class ChatsApi extends BaseAPI {
         return this.http.get('')
     }
 
-    addUserToChat(chatId: ChatData, userId: ChatData) {
+    addUserToChat(chatId: number, userId: number | string) {
         return this.http.put(`/users`, { users: [userId], chatId })
     }
 
-    deleteUserFromChat(chatId: ChatData, userId: ChatData) {
+    deleteUserFromChat(chatId: number, userId: number | string) {
         return this.http.delete(`/users`, { users: [userId], chatId })
     }
 
-    getChatUsers(data: ChatData): Promise<string> {
+    getChatUsers(data: number | string): Promise<string> {
         return this.http.get(`/${data}/users`);
     }
 
-    deleteChat(chatId: ChatData): Promise<string> {
+    deleteChat(chatId: number): Promise<string> {
         return this.http.delete('', {chatId} );
     }
 
-    getToken(id: ChatData): Promise<string> {
+    getToken(id: number): Promise<string> {
         return this.http.post(`/token/${id}`);
     }
 

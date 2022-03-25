@@ -85,8 +85,7 @@ export class ChatPage extends Block {
                     store.set('messages', this.props.message)
 
 
-
-                    if (event.type === 'get old') {
+                  if (event.type === 'get old') {
                         console.log('старые сообщения', event.data);
                     } else {
                         console.log('Новые сообщения', event.data);
@@ -198,7 +197,7 @@ export class ChatPage extends Block {
             type: 'submit',
             className: 'chat__btn',
             events: {
-                click: (e) => {
+                click: (e: any) => {
                     e.preventDefault();
                     this.onSendMessage()
                 },
@@ -215,11 +214,13 @@ export class ChatPage extends Block {
 
     inputValidation() {
         return {
-            focus: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            focus: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
-            blur: (e) => {
-                validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
+            blur: (e: any) => {
+                // @ts-ignore
+              validateInputs({elementId: e.target.id, regexp: PATTERN_VALIDATION[e.target.id]});
             },
         };
     }
