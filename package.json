@@ -16,7 +16,10 @@
     "lint": "npx eslint src/**/*.js --fix",
     "prettier": "npx prettier --write .",
     "test": "NODE_ENV=test mocha --require babel-register.js --require virtualDOM.js",
-    "deploy": "heroku login && heroku container:login && heroku container:push web --app=tatushka-messenger && heroku container:release web --app=tatushka-messenger"
+    "deploy": "heroku login && heroku container:login && heroku container:push web --app=tatushka-messenger && heroku container:release web --app=tatushka-messenger",
+    "precommit": "lint-staged",
+    "prepare": "husky install"
+
   },
   "repository": {
     "type": "git",
@@ -81,6 +84,11 @@
     "xmlhttprequest": "1.8.0",
     "eslint-plugin-import": "2.25.4",
     "lint-staged": "12.3.7"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint",
+    "*.scss": "npx stylelint",
+    "*": "npm run test"
   },
   "dependencies": {
     "nanoid": "3.3.1",

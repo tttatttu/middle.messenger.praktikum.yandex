@@ -15,22 +15,22 @@
   flex-direction: column;
   max-width: 50%;
   border-radius: 12px;
-  background: #b7b7b0;
-  padding: 5px 10px 15px 10px;
+  background: #B7B7B0;
+  padding: 5px 10px 15px;
   margin-bottom: 5px;
   position: relative;
 
   &_my {
     margin-left: auto;
     border-bottom-right-radius: 0;
-    background-color: #e8dada;
+    background-color: #E8DADA;
     right: 10px;
   }
 
   &_companion {
     margin-right: auto;
     border-bottom-left-radius: 0;
-    background-color: #97a2be;
+    background-color: #97A2BE;
     left: 10px;
   }
 
@@ -54,6 +54,6 @@
     bottom: 5px;
     font-size: 9px;
     line-height: 9px;
-    color: #5d5b5b;
+    color: #5D5B5B;
   }
 }
