@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.port || 8080;
 
 const staticPath = path.join(__dirname, 'dist');
 
-app.listen(process.env.port || 8080, function () {
+app.listen( PORT, function () {
   console.log(`Example app listening on port ${PORT}!`);
 });
 
