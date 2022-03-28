@@ -5,7 +5,7 @@ const PORT = 8080;
 
 const staticPath = path.join(__dirname, 'dist');
 
-app.listen(PORT, function () {
+app.listen(process.env.port || 8080, function () {
   console.log(`Example app listening on port ${PORT}!`);
 });
 
