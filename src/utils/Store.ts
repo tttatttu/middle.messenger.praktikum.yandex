@@ -1,87 +1,85 @@
-import {EventBus} from "./EventBus";
-import {Indexed, set} from "./helpers";
-import Block from "./Block";
-import {isEqual} from "./Router";
-import {SignUpData} from "../api/AuthApi";
+import { EventBus } from './EventBus';
+import { Indexed, set } from './helpers';
+import Block from './Block';
+import { isEqual } from './Router';
+import { SignUpData } from '../api/AuthApi';
 
 export enum StoreEvents {
-    Updated = 'updated'
+  Updated = 'updated',
 }
 
 interface UserData {
-    id: number;
-    first_name: string;
-    second_name: string;
-    display_name: string;
-    login: string;
-    email: string;
-    phone: string;
-    avatar: string;
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
+  avatar: string;
 }
 export interface ChatsData {
-    id: number | string;
-    title: string;
-    avatar: string;
-    unread_count: any;
-    last_message: {
-        user: SignUpData;
-        time: string;
-        content: string
-    }
-
+  id: number | string;
+  title: string;
+  avatar: string;
+  unread_count: any;
+  last_message: {
+    user: SignUpData;
+    time: string;
+    content: string;
+  };
 }
-
 
 interface StoreData {
-    chatList?: ChatsData;
-    currentUser?: UserData;
-    currentChatId?: number;
-    chatToTitle?: string;
-    currentChat?: UserData[]
-    messages?: any
+  chatList?: ChatsData;
+  currentUser?: UserData;
+  currentChatId?: number;
+  chatToTitle?: string;
+  currentChat?: UserData[];
+  messages?: any;
 }
 
-class Store extends EventBus{
-    private state: Indexed = {};
+class Store extends EventBus {
+  private state: Indexed = {};
 
-    public getState() {
-        return this.state;
-    }
+  public getState() {
+    return this.state;
+  }
 
-    public set(path: keyof StoreData, value: unknown) {
-        set(this.state, path, value);
+  public set(path: string, value: unknown) {
+    set(this.state, path, value);
 
-        this.emit(StoreEvents.Updated)
-    };
+    this.emit(StoreEvents.Updated);
+  }
 }
 
-const store =  new Store();
+const store = new Store();
 
-export const withStore = (mapStateToProps: (state: StoreData) => Record<string, unknown>) => (Component: typeof Block) => {
-    let state;
+export const withStore =
+  (mapStateToProps: (state: StoreData) => Record<string, unknown>) => (Component: typeof Block) => {
+    let state: any;
 
     return class extends Component {
-        constructor(props) {
-            state = mapStateToProps(store.getState());
+      constructor(props: any) {
+        state = mapStateToProps(store.getState());
 
-            super({ ...props, ...state });
+        super({ ...props, ...state });
 
-            store.on(StoreEvents.Updated, () => {
-                const newState = mapStateToProps(store.getState());
+        store.on(StoreEvents.Updated, () => {
+          const newState = mapStateToProps(store.getState());
 
-                if (!isEqual(state, newState)) {
-                    this.setProps({ ...newState });
-                    state = newState
-                }
-            });
-        }
+          if (!isEqual(state, newState)) {
+            this.setProps({ ...newState });
+            state = newState;
+          }
+        });
+      }
     };
-};
+  };
 
-export default store
+export default store;
 
-export const withUser = withStore((state) => ({...state.currentUser}))
-export const withChats = withStore((state) => ({chatList: state.chatList}))
-export const withCurrentChat = withStore((state) => ({...state.currentChat}))
-export const withMessages = withStore((state) => ({messages: state.messages}))
-
+export const withUser = withStore((state: StoreData) => ({ ...state.currentUser }));
+export const withChats = withStore((state: StoreData) => ({ chatList: state.chatList }));
+export const withCurrentChat = withStore((state: StoreData) => ({ ...state.currentChat }));
+export const withMessages = withStore((state: StoreData) => ({ messages: state.messages }));

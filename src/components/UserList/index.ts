@@ -1,4 +1,5 @@
-import {UserList} from './userList';
-import {withChats} from "../../utils/Store";
+import { UserList } from './userList';
+import { withChats } from '../../utils/Store';
 
-export default withChats(UserList)
+// @ts-ignore
+export default withChats(UserList);

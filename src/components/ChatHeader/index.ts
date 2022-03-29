@@ -1,4 +1,5 @@
-import {withCurrentChat} from "../../utils/Store";
-import {ChatHeader} from './chatHeader';
+import { withCurrentChat } from '../../utils/Store';
+import { ChatHeader } from './chatHeader';
 
-export default withCurrentChat(ChatHeader)
+// @ts-ignore
+export default withCurrentChat(ChatHeader);

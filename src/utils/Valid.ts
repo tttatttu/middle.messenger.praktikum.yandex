@@ -36,9 +36,11 @@ export const validateInputs = (...items: ValidationInput[]) => {
   const inputsValidationResults = items.map((item) => validateInput(item.elementId, item.regexp));
 
   if (inputsValidationResults.every((item) => item.validationOK)) {
+    const res = inputsValidationResults.reduce(
+      (acc, cur) => Object.assign(acc, { [cur.inputName]: cur.inputValue }),
+      {},
+    );
 
-    const res = inputsValidationResults.reduce((acc, cur) => Object.assign(acc, { [cur.inputName]: cur.inputValue }), {});
-
-    return res
+    return res;
   }
 };

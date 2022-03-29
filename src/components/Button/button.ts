@@ -12,6 +12,7 @@ interface ButtonProps {
 
 export class Button extends Block {
   constructor(props: ButtonProps) {
+    // @ts-ignore
     super(props);
   }
 

@@ -1,6 +1,6 @@
-import {EventBus} from './EventBus';
+import { EventBus } from './EventBus';
 // @ts-ignore
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 
 class Block {
   static EVENTS = {
@@ -43,6 +43,7 @@ class Block {
       if (value instanceof Block) {
         children[key] = value;
       } else if (Array.isArray(value) && value.every((v) => v instanceof Block)) {
+        // @ts-ignore
         children[key] = value;
       } else {
         props[key] = value;
@@ -84,7 +85,8 @@ class Block {
     }
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
+    console.log(oldProps, newProps);
     return true;
   }
 
@@ -172,10 +174,12 @@ class Block {
   }
 
   show() {
+    // @ts-ignore
     this.getContent().style.display = 'block';
   }
 
   hide() {
+    // @ts-ignore
     this.getContent().style.display = 'none';
   }
 

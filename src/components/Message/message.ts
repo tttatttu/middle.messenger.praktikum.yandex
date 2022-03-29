@@ -13,7 +13,7 @@ interface MessagesProps {
 
 export class Message extends Block {
   constructor(props: MessagesProps) {
-    super({...props});
+    super({ ...props });
   }
 
   render() {

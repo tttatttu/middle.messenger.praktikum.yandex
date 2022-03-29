@@ -1,3 +1,3 @@
-import {init} from "./utils/App";
+import { init } from './utils/App';
 
-init()
+init();

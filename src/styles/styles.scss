@@ -22,7 +22,7 @@ body {
 
 body {
   color: #252934;
-  background: #fafafa;
+  background: #FAFAFA;
   font-size: large;
   font-family: 'Faro Sad', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
@@ -41,7 +41,7 @@ body {
   height: 100%;
   margin: 200px auto;
   padding: 40px;
-  background: #dc54baff;
+  background: #DC54BAFF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,7 +109,6 @@ body {
     animation: errors 0.1s ease-in-out;
     width: 100%;
     padding: 0;
-
     margin-bottom: 15px;
 
     &_light {
@@ -140,7 +139,7 @@ body {
     width: 100%;
     border: none;
     border-radius: 2px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #CCC;
     padding: 10px;
     box-sizing: border-box;
     font-size: 16px;
@@ -155,16 +154,16 @@ body {
     border: none;
     text-align: center;
     cursor: pointer;
-    background-color: #ffdb4d;
+    background-color: #FFDB4D;
     color: #000;
   }
 
   &__input:valid:not(:placeholder-shown) {
-    border-color: #ffdb4d;
+    border-color: #FFDB4D;
   }
 
   &__input:invalid:not(:placeholder-shown) {
-    border-color: #df4b41;
+    border-color: #DF4B41;
   }
 
   &__input:invalid:not(:placeholder-shown) + .form__error {

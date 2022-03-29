@@ -1,4 +1,4 @@
-import {ProfileEditPage} from "./profileEdit";
-import {withUser} from "../../utils/Store";
+import { ProfileEditPage } from './profileEdit';
+import { withUser } from '../../utils/Store';
 
-export default withUser(ProfileEditPage)
+export default withUser(ProfileEditPage);

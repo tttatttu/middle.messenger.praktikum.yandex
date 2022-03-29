@@ -1,4 +1,5 @@
-import {withRouter} from "../../utils/Router";
-import {Link} from "./link";
+import { withRouter } from '../../utils/Router';
+import { Link } from './link';
 
-export default withRouter(Link)
+// @ts-ignore
+export default withRouter(Link);
