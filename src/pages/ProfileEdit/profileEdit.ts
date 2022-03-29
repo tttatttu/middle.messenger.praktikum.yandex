@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './profileEdit.hbs';
 import { Button } from '../../components/Button/button';
 import { Input } from '../../components/Input/input';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { PATTERN_VALIDATION } from '../../utils/Const';
 import { validateInputs } from '../../utils/Valid';
 import UsersController from '../../controllers/UsersController';
 import { SignUpData } from '../../api/AuthApi';

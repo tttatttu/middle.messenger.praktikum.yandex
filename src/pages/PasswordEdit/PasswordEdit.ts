@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 import template from './passwordEdit.hbs';
 import { Input } from '../../components/Input/input';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { PATTERN_VALIDATION } from '../../utils/Const';
 import { Button } from '../../components/Button/button';
 import { validateInputs } from '../../utils/Valid';
 import UsersController from '../../controllers/UsersController';

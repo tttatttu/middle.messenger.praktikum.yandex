@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import { Button } from '../../components/Button/button';
 import template from './signup.hbs';
 import { Input } from '../../components/Input/input';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { PATTERN_VALIDATION } from '../../utils/Const';
 import { validateInputs } from '../../utils/Valid';
 import AuthController, { ControllerSignUpData } from '../../controllers/AuthController';
 import Router from '../../utils/Router';

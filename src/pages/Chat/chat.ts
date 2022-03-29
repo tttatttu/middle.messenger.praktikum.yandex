@@ -3,7 +3,7 @@ import template from '../Chat/chat.hbs';
 import { Input } from '../../components/Input/input';
 import { Button } from '../../components/Button/button';
 import { validateInputs } from '../../utils/Valid';
-import { PATTERN_VALIDATION } from '../../utils/CONST';
+import { PATTERN_VALIDATION } from '../../utils/Const';
 import ChatController from '../../controllers/ChatController';
 import UserList from '../../components/UserList/index';
 import store from '../../utils/Store';

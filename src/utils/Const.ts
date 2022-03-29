@@ -15,4 +15,4 @@ export const PATTERN_VALIDATION = {
   message: /./,
 };
 
-export const avatar = 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg';
+export const AVATAR = 'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg';

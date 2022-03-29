@@ -20,8 +20,8 @@ class ChatController {
     return await this.api.addUserToChat(chatId, userId);
   }
 
-  deleteUserFromChat(chatId: number, userId: number | string) {
-    return this.api.deleteUserFromChat(chatId, userId);
+  async deleteUserFromChat(chatId: number, userId: number | string) {
+    return await this.api.deleteUserFromChat(chatId, userId);
   }
 
   async getChatUsers(data: number) {
