@@ -1,13 +1,12 @@
-.users {
+.chats-list {
   list-style-type: none;
   margin: 0;
   padding-left: 10px;
 }
 
-.user {
+.chat-list {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-around;
   position: relative;
   border-bottom: 1px solid #252934;
   padding: 10px 10px 10px 0;
@@ -29,7 +28,6 @@
   }
 
   &__img {
-    margin: 0 10px;
     width: 45px;
     height: 45px;
     border-radius: 50px;

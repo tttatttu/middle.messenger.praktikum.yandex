@@ -1,0 +1,22 @@
+<ul class='chats-list'>
+  {{#each chatList}}
+    <li class='chat-list' data-id={{id}}>
+      <img class='chat-list__img' src={{#if avatar}}{{avatar}}{{else}}
+      'https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg'{{/if}} alt='avatar' />
+      <div class='chat-list__info'>
+        <h2 class='chat-list__title'>{{title}}</h2>
+        <span class='chat-list__text'>{{last_message.content}}</span>
+      </div>
+      <div class='chat-list__helper'>
+        <button type='button' class='chat-list__button'>x</button>
+        <span class='chat-list__time'>{{time}}</span>
+      </div>
+      {{button}}
+      {{#if unread}}
+        <div class='chat-list__count'>
+          {{unread_count}}
+        </div>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>

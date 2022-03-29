@@ -11,6 +11,7 @@ import Link from '../../components/Link/index';
 import Router from '../../utils/Router';
 import ChatHeader from '../../components/ChatHeader/index';
 import Message from '../../components/Message/index';
+import ChatList from "../../components/Chat";
 
 export class ChatPage extends Block {
   constructor(props: Record<string, unknown> | undefined) {
@@ -107,7 +108,9 @@ export class ChatPage extends Block {
   }
 
   protected initChildren() {
-    this.children.user = new UserList({});
+    console.log(this.props)
+    this.children.chatList = new ChatList({chatList: this.props})
+    this.children.user = new UserList({updatePage: this.updatePage});
     this.children.inputCreateChat = new Input({
       type: 'text',
       id: 'title',

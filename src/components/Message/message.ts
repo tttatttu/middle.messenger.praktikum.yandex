@@ -13,6 +13,7 @@ interface MessagesProps {
 
 export class Message extends Block {
   constructor(props: MessagesProps) {
+    console.log('4444444444', props)
     super({ ...props });
   }
 
